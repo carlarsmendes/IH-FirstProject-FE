@@ -35,12 +35,12 @@ All the rules remained, since there would be no point in doing it in a different
 
 <h3><b>---Steps to follow---</b></h3>
 <ol>
-  <li>Create the GitHUb repository & ReadMe intro [x] </li>
-  <li>Build the foundation files of HTML, CSS and JS [] </li>
-  <li>Created the design for: Walls; Empty beer; Filled beer; Beer Keg; player [] </li>
-  <li>Define the main functions and variables: <code>moveLeft()</code> <code>moveRight()</code> <code>moveUp()</code> <code>moveDown()</code> <code>levelUp()</code> <code>resetLevel()</code> [] </li>
-  <li>Test the main functions [] </li>
-  <li>Design of webpages: Main screen, level up, First screen of welcome & Playgame [] </li>
+  <li>Create the GitHUb repository & ReadMe intro </li>
+  <li>Build the foundation files of HTML, CSS and JS  </li>
+  <li>Created the design for: Walls; Empty beer; Filled beer; Beer Keg; player  </li>
+  <li>Define the main functions and variables: <code>moveLeft()</code> <code>moveRight()</code> <code>moveUp()</code> <code>moveDown()</code> <code>levelUp()</code> <code>resetLevel()</code> </li>
+  <li>Test the main functions </li>
+  <li>Design of webpages: Main screen, level up, First screen of welcome & Playgame </li>
 </ol>
 
 <h3><b>---Design picked & color scheme---</b></h3>
