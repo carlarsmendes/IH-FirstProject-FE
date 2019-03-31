@@ -48,5 +48,4 @@ All the rules remained, since there would be no point in doing it in a different
 <b>---Structure---</b>
 
 
-
 Thanks or reading!!!
