@@ -46,6 +46,20 @@ All the rules remained, since there would be no point in doing it in a different
 <h3><b>---Design picked & color scheme---</b></h3>
   
 <h3><b>---Structure---</b></h3>
+<h3><b>---Technologies used---</b></h3>
+<h3><b>---Approach taken---</b></h3>
+<h3><b>---Unsolved problems---</b></h3>
+<h3><b>---Questions to answer to---</b></h3>
+<ul>
+  <li>Did you deliver a project that met all the technical requirements? Given what the class has covered so far, did you build something that was reasonably complex?</li>
+  <li>Did you added a personal spin or creative element into your project submission? Did you deliver something engaging and playable to the end user?</li>
+  <li>Did you follow code style guidance and best practices covered in class, such as spacing, modularity, and semantic naming?</li>
+  <li>Did you deploy your application to a public url using GitHub Pages?</li>
+  <li>Presentation in slides.com; Elevator pitch; show and explain code snippets in your presentation slides; display screenshot of your GitHub graphs to show your commits;Demonstrate the important feature of your game; Did you made a mistake planning your time? Maybe scoping your feature? Conceptualizing your game? Coding?</li>
+
+
+
+</ul>
 
 
 Thanks for reading!!!
