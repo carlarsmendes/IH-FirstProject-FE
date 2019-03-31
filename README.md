@@ -1,30 +1,30 @@
 # My First IronHack project - Tetsu bīru ["Iron Beers"]
 
-## This is the repository of my first Ironhack Web Dev bootcamp project - Coding a game.
+<h2>This is the repository of my first Ironhack Web Dev bootcamp project - Coding a game.</h2>
 
-###**----Game chosen: Sokoban (倉庫番 sōko-ban, "warehouse keeper")----**
+<h3><b>----Game chosen: Sokoban (倉庫番 sōko-ban, "warehouse keeper")----</b></h3>
 
 <p>Sokoban is a puzzle video game, in which the player is pushing crates or boxes trying to get them to the proper location.</p>
 <p>It was created in 1981 by Hiroyuki Imabayashi and published in December 1982 by Thinking Rabbit.
 This was in fact the version I still remember playing.</p>
-![](http://www.bestoldgames.net/img/ss/sokoban/sokoban-ss1.gif)
+
 <p>Currently, more than 7500+ levels have been created for various versions of the game.</p>
 
-<p>**Rules:**</p>
+<p><b>Rules:</b></p>
 <p>The player is allowed to move vertically or horizontally, into empty squares, and is allowed to push (never pull) the boxes in the same directions. The puzzle is solved when all the boxes are in the storage locations.
 The number of boxes === Number of storage locations</p>
 
-<p>**Reasons for choosing this game:**</p>
+<p><b>Reasons for choosing this game:</b></p>
 <p>I still remember playing the game with its "blue and purple" visuals an pixel design, struggling to pass to the next level and the one after that.Once I started coding, I started wondering how a game like that would look like behind its looks.</p>
-*Would it be as challenging to code it, as it was to play it?*
+<i>Would it be as challenging to code it, as it was to play it?</i>
 <br>
 
-###**---My personal touch---**
+<h3><b>---My personal touch---</b></h3>
 
 <p>I decided to change the looks of the original game, so that instead of crates the player would be pushing a keg, and awaiting some empty mugs - Which would should be filled as a final goal.
 All the rules remained, since there would be no point in doing it in a different way.</p>
 
-###**---Challenges ahead----**
+<h3><b>---Challenges ahead----</b></h3>
 <ol> 
   <li>Should it be DOM manipulation or Canvas? OnePage or one page per level?</li>
   <li>Which classes should be created?</li>
@@ -33,7 +33,7 @@ All the rules remained, since there would be no point in doing it in a different
   <li>How are my players be kept engaged? -> Little guy on the side with funny dialogue!; Scores and time; Looking forward to the end</li>
 </ol>
 
-###**---Steps to follow---**
+<h3><b>---Steps to follow---</b></h3>
 <ol>
   <li>Create the GitHUb repository & ReadMe intro</li>
   <li>Build the foundation files of HTML, CSS and JS</li>
@@ -43,9 +43,9 @@ All the rules remained, since there would be no point in doing it in a different
   <li>Design of webpages: Main screen, level up, First screen of welcome & Playgame</li>
 </ol>
 
-###**---Design picked & color scheme---**
-
-###**---Structure---**
+<h3><b>---Design picked & color scheme---</b></h3>
+  
+<h3><b>---Structure---</b></h3>
 
 
 Thanks for reading!!!
