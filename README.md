@@ -30,6 +30,7 @@ All the rules remained, since there would be no point in doing it in a different
   <li>Which classes should be created?</li>
   <li>Define MVP: One level</li>
   <li>How should this be a challenge? (Or will it be to begin with?)</li>
+  <li>How are my players be kept engaged? -> Little guy on the side with funny dialogue!; Scores and time; Looking forward to the end</li>
 </ol>
 
 <b>---Steps to follow---</b>
