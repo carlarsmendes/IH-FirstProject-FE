@@ -1,0 +1,44 @@
+.board-container{
+    width:45vw;
+    height:45vw;
+    border:3px solid black;
+    position:relative;
+    background-color: transparent;
+    padding:0;
+}
+
+/* ----------GAME IMAGES----------------- */
+
+.movable, .static{
+    position:absolute;
+    padding:0;
+    text-align:center;
+    background-color: transparent;
+    width: 3.5vw;
+    height: 3.5vw;
+    margin:0
+}
+
+.player{
+    background-image: url(../img/character-down.png);
+}
+
+.keg{
+    background-image: url(../img/Keg.svg)
+}
+
+.tile{
+    background-image: url(../img/BlueTile.svg)
+}
+
+.beer-full{
+    background-image: url(../img/Beer_Full.svg)
+}
+
+.beer-empty{
+    background-image: url(../img/Beer_Empty.svg)
+}
+
+.no-tile{
+    background-image: none
+}
