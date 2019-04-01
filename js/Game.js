@@ -18,33 +18,27 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
         }
         return arr
         },
-        // Taken from Lucas' dwarf for analysis
-    // this.board = [
-    //     ["U", "R", "U", "U", "U", "R", "U", "R", "U", "U", "U", "U", "R", "U", "U", "U", "U", "U", "R"],
-    //     ["U", "R", "U", "U", "U", "U", "U", "R", "U", "R", "U", "U", "R", "U", "U", "R", "U", "U", "R"],
-    //     ["U", "U", "U", "R", "U", "R", "U", "R", "U", "R", "R", "U", "R", "U", "R", "U", "R", "U", "R"],
-    //     ["U", "U", "R", "U", "U", "R", "U", "U", "U", "R", "R", "U", "R", "T", "R", "U", "R", "U", "U"],
-    //     ["U", "U", "R", "U", "U", "R", "U", "U", "R", "U", "U", "U", "R", "R", "R", "U", "R", "R", "U"],
-    //     ["U", "R", "R", "U", "U", "R", "U", "R", "U", "U", "R", "U", "U", "U", "R", "U", "U", "U", "U"],
-    //     ["U", "R", "R", "R", "U", "R", "U", "U", "U", "U", "U", "R", "R", "U", "U", "U", "R", "R", "R"],
-    //     ["U", "R", "U", "U", "U", "R", "U", "U", "R", "R", "U", "U", "R", "U", "U", "R", "U", "U", "U"],
-    //     ["U", "U", "U", "U", "U", "R", "U", "R", "U", "U", "U", "U", "U", "R", "U", "U", "U", "R", "U"],
-    //     ["U", "U", "R", "R", "R", "R", "U", "R", "U", "P", "U", "R", "U", "R", "U", "R", "R", "R", "U"],
-    //     ["U", "U", "U", "U", "U", "R", "U", "R", "U", "U", "U", "R", "U", "U", "U", "R", "R", "U", "U"],
-    //     ["R", "R", "R", "R", "U", "R", "U", "U", "U", "U", "R", "R", "R", "R", "R", "U", "U", "U", "R"],
-    //     ["U", "U", "U", "U", "U", "U", "R", "R", "U", "U", "U", "R", "R", "U", "U", "U", "U", "R", "U"],
-    //     ["U", "R", "R", "R", "R", "U", "U", "R", "R", "U", "U", "U", "U", "U", "U", "R", "U", "U", "R"],
-    //     ["U", "U", "R", "R", "R", "U", "U", "R", "U", "U", "R", "R", "R", "R", "U", "R", "U", "U", "R"],
-    //     ["U", "U", "U", "R", "R", "U", "U", "R", "U", "R", "R", "U", "U", "U", "U", "R", "U", "R", "U"],
-    //     ["R", "U", "U", "U", "U", "U", "U", "U", "U", "R", "R", "U", "R", "U", "U", "R", "U", "R", "U"],
-    //     ["R", "R", "U", "R", "R", "U", "R", "R", "U", "U", "U", "U", "U", "R", "U", "R", "U", "U", "U"],
-    //     ["R", "R", "U", "U", "U", "R", "U", "U", "U", "U", "R", "R", "U", "U", "R", "R", "U", "R", "U"]
+    // This would represent the whole Board.
+    // T = Tile
+    // P = Player
+    // B = Beer
+    // K = Keg
+    // E = Empty
+
+    // this.board1 = [
+    //     ["E", "E", "T", "T", "T", "T", "E", "E", "E"],
+    //     ["T", "T", "T", "E", "E", "T", "T", "T", "T"],
+    //     ["T", "E", "E", "E", "E", "E", "K", "E", "T"],
+    //     ["T", "E", "T", "E", "E", "T", "K", "E", "T"],
+    //     ["T", "E", "B", "E", "B", "T", "E", "P", "T"],     
+    //     ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
     //     ];
+
     this.player = { //this defines the player and its initial position. should be diferent for each level, so should 
         x: playerStartPositionX,
         y: playerStartPositionY,
         direction: "down",
-        img: src='../img/Beer_Full.svg'
+        img: src='../img/Beer_Full.svg'//how to look for the image
     }
     this.keg = { //this defines the beers and their initial positions. should be diferent for each level, so should be variables
         x: 3, //3 for testing
@@ -100,5 +94,8 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
         let boardMaxY = this.TOTAL_HEIGHT
         this.keg.y = Math.min(this.keg.y+1,boardMaxY);
     }
-    
+
 };
+
+
+  
