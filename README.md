@@ -1,8 +1,8 @@
-# My First IronHack project # - Tetsu bīru ["Iron Beers"]
+# My First IronHack project - Tetsu bīru ["Iron Beers"]
 
-<p>This is the repository of my first Ironhack Web Dev bootcamp project - Coding a game.</p>
+<h2>This is the repository of my first Ironhack Web Dev bootcamp project - Coding a game.</h2>
 
-<p><b>----Game chosen: Sokoban (倉庫番 sōko-ban, "warehouse keeper")----</b></p>
+<h3><b>----Game chosen: Sokoban (倉庫番 sōko-ban, "warehouse keeper")----</b></h3>
 
 <p>Sokoban is a puzzle video game, in which the player is pushing crates or boxes trying to get them to the proper location.</p>
 <p>It was created in 1981 by Hiroyuki Imabayashi and published in December 1982 by Thinking Rabbit.
@@ -19,12 +19,12 @@ The number of boxes === Number of storage locations</p>
 <i>Would it be as challenging to code it, as it was to play it?</i>
 <br>
 
-<b>---My personal touch---</b>
+<h3><b>---My personal touch---</b></h3>
 
 <p>I decided to change the looks of the original game, so that instead of crates the player would be pushing a keg, and awaiting some empty mugs - Which would should be filled as a final goal.
 All the rules remained, since there would be no point in doing it in a different way.</p>
 
-<b>---Challenges ahead----</b>
+<h3><b>---Challenges ahead----</b></h3>
 <ol> 
   <li>Should it be DOM manipulation or Canvas? OnePage or one page per level?</li>
   <li>Which classes should be created?</li>
@@ -33,20 +33,33 @@ All the rules remained, since there would be no point in doing it in a different
   <li>How are my players be kept engaged? -> Little guy on the side with funny dialogue!; Scores and time; Looking forward to the end</li>
 </ol>
 
-<b>---Steps to follow---</b>
+<h3><b>---Steps to follow---</b></h3>
 <ol>
-  <li>Create the GitHUb repository & ReadMe intro</li>
-  <li>Build the foundation files of HTML, CSS and JS</li>
-  <li>Created the design for: Walls; Empty beer; Filled beer; Beer Keg; player</li>
-  <li>Define the main functions and variables: <code>moveLeft()</code> <code>moveRight()</code> <code>moveUp()</code> <code>moveDown()</code> <code>levelUp()</code> <code>resetLevel()</code></li>
-  <li>Test the main functions</li>
-  <li>Design of webpages: Main screen, level up, First screen of welcome & Playgame</li>
+  <li>Create the GitHUb repository & ReadMe intro </li>
+  <li>Build the foundation files of HTML, CSS and JS  </li>
+  <li>Created the design for: Walls; Empty beer; Filled beer; Beer Keg; player  </li>
+  <li>Define the main functions and variables: <code>moveLeft()</code> <code>moveRight()</code> <code>moveUp()</code> <code>moveDown()</code> <code>levelUp()</code> <code>resetLevel()</code> </li>
+  <li>Test the main functions </li>
+  <li>Design of webpages: Main screen, level up, First screen of welcome & Playgame </li>
 </ol>
 
-<b>---Design picked & color scheme---</b>
+<h3><b>---Design picked & color scheme---</b></h3>
+  
+<h3><b>---Structure---</b></h3>
+<h3><b>---Technologies used---</b></h3>
+<h3><b>---Approach taken---</b></h3>
+<h3><b>---Unsolved problems---</b></h3>
+<h3><b>---Questions to answer to---</b></h3>
+<ul>
+  <li>Did you deliver a project that met all the technical requirements? Given what the class has covered so far, did you build something that was reasonably complex?</li>
+  <li>Did you added a personal spin or creative element into your project submission? Did you deliver something engaging and playable to the end user?</li>
+  <li>Did you follow code style guidance and best practices covered in class, such as spacing, modularity, and semantic naming?</li>
+  <li>Did you deploy your application to a public url using GitHub Pages?</li>
+  <li>Presentation in slides.com; Elevator pitch; show and explain code snippets in your presentation slides; display screenshot of your GitHub graphs to show your commits;Demonstrate the important feature of your game; Did you made a mistake planning your time? Maybe scoping your feature? Conceptualizing your game? Coding?</li>
 
-<b>---Structure---</b>
 
 
+</ul>
 
-Thanks or reading!!!
+
+Thanks for reading!!!
