@@ -68,7 +68,7 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
         let boardMinY = 0;
         this.player.y = Math.max(this.player.y-1,boardMinY);
         this.player.direction = 'up';
-        $player.style.top = moveY();//DOM Manipulation
+        // $player.style.top = moveY();//DOM Manipulation
         if (this.player.x === this.keg.x && this.keg.y === this.player.y+1){
             moveKegUp()}
     }

@@ -3,6 +3,7 @@ const $player = document.querySelector(".player");
 const $board = document.querySelector(".board-container");
 
 ////HERE FOR DEBUGGING AND TESTING
+
 board = [
     ["E", "E", "T", "T", "T", "T", "E", "E", "E"],
     ["T", "T", "T", "E", "E", "T", "T", "T", "T"],
@@ -12,40 +13,37 @@ board = [
     ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
     ];
 
-
-const $width = $board.offsetWidth
-const $height = $board.offsetHeight
+const $boardWidth = $board.offsetWidth
+const $boardHeight = $board.offsetHeight
 
 // Some constants
 const NB_OF_TILES_WIDTH = 9
 const NB_OF_TILES_HEIGHT = 6
 
-const TILE_SIZE_WIDTH = $width / NB_OF_TILES_WIDTH
-const TILE_SIZE_HEIGHT = $height / NB_OF_TILES_HEIGHT
+const TILE_SIZE_WIDTH = $boardWidth / NB_OF_TILES_WIDTH
+const TILE_SIZE_HEIGHT = $boardWidth / NB_OF_TILES_HEIGHT
 
 //which classes should I create?
 //should I have a new game for each level?
 //should I have a player class? or shoud always be the same? should player be a part of the Game class, or separate?
 
-let game1 = new Game(9,6,2,2);  //this should be the initial sizes and also the position of the player
+let game1 = new Game(9,6,2,2);  //this should be the initial sizes and also the initial position of the player
 
 window.addEventListener("keydown", function onEvent(event) {
     if (event.key === "ArrowLeft") {
-        movePlayerLeft(game1);
+        game1.movePlayerLeft(game1);
         console.log("move left");
     }else if(event.key === "ArrowRight"){
-        movePlayerRight(game1);
+        game1.movePlayerRight(game1);
         console.log("move right");
     }else if(event.key === "ArrowUp"){
-        movePlayerUp(game1);
+        game1.movePlayerUp(game1);
         console.log("move up");
     }else if(event.key === "ArrowDown"){
-        movePlayerDown(game1);
+        game1.movePlayerDown(game1);
         console.log("move down");
     }
   });
-
-
 
     // T = Tile
     // P = Player
@@ -57,19 +55,17 @@ window.addEventListener("keydown", function onEvent(event) {
 ///Creating the DIV elements with 'no-tile static' and with correspondant IDs  - How to do this without jQuery?
 
 function structureCreation(){
-    for( var i = 0; i < NB_OF_TILES_HEIGHT; i++ ) {
-        for( var j = 0; j < NB_OF_TILES_WIDTH; j++ ) {
+    // for( var i = 0; i < 7; i++ ) {  //BUG::   only works when the numbers with/height are inverted
+    for( var i = 0; i < NB_OF_TILES_WIDTH; i++ ) {  //BUG::   only works when the numbers with/height are inverted
+        for( var j = 0; j < NB_OF_TILES_HEIGHT; j++ ) { //BUG::   only works when the numbers with/height are inverted
         var newDiv = $( "<div id='" + i + "-" + j + "' class='no-tile static'></div>" );
         $( ".board-container" ).append( newDiv );
-        // document.getElementById(`"${i}-${j}"`).style.top = `"${i*TILE_SIZE_WIDTH}"`
-
 
         // var textedDiv = "<div id='" + i + "-" + j + "' class='tile'></div>"
         // var newDiv = document.createElement(textedDiv);
         // $board.appendChild(newDiv) ;
         
         // $board.appendChild( newDiv );
-        // document.getElementById(`"${i}-${j}"`).style.top = `'${i*TILE_SIZE_WIDTH}'`
     }
 }
 }
@@ -90,11 +86,11 @@ structureCreation();
 function updateBoard() { //figure out wihout jQuery
     //     // $( ".tile static" ).removeClass( "player" );
     //     // $( ".tile static" ).removeClass( "unvisited" );
-    for( var i = 0; i < NB_OF_TILES_HEIGHT; i++ ) {
-        for( var j = 0; j < NB_OF_TILES_WIDTH; j++ ) {
+    for( var i = 0; i < NB_OF_TILES_WIDTH; i++ ) {  //BUG::   only works when the numbers with/height are inverted
+        for( var j = 0; j < NB_OF_TILES_HEIGHT; j++ ) { //BUG::   only works when the numbers with/height are inverted
           $( "#" + i + "-" + j  ).removeClass( 'no-tile static' );
 
-        switch (board[i][j])
+        switch (board[j][i])
         {
             case "P": $( "#" + i + "-" + j ).addClass("player movable");
             break;
@@ -117,13 +113,12 @@ updateBoard();
      function positionBoard() { //figure out wihout jQuery
         //     // $( ".tile static" ).removeClass( "player" );
         //     // $( ".tile static" ).removeClass( "unvisited" );
-        for( var i = 0; i < NB_OF_TILES_HEIGHT; i++ ) {
-            for( var j = 0; j < NB_OF_TILES_WIDTH; j++ ) {
+        for( var i = 0; i < NB_OF_TILES_WIDTH; i++ ) {  //BUG::   only works when the numbers with/height are inverted
+            for( var j = 0; j < NB_OF_TILES_HEIGHT; j++ ) { //BUG::   only works when the numbers with/height are inverted
             
-                $("#" + i + "-" + j  ).css("left" , i*TILE_SIZE_HEIGHT+"px");
-                // $("#" + i + "-" + j  ).css(`'left', '${i*TILE_SIZE_WIDTH}px'`);
-              $( "#" + i + "-" + j  ).css("top", j*TILE_SIZE_WIDTH+"px");
-              $( "#" + i + "-" + j  ).css("width", TILE_SIZE_WIDTH+"px");
+              $("#" + i + "-" + j  ).css("left" , i*TILE_SIZE_WIDTH+"px");
+              $( "#" + i + "-" + j  ).css("top", j*TILE_SIZE_HEIGHT+"px");
+            //   $( "#" + i + "-" + j  ).css("width", TILE_SIZE_WIDTH+"px");
             //   $( "#" + i + "-" + j  ).css("height", TILE_SIZE_HEIGHT+"px");
             //   $( '#0-5' ).css('top', '300px')
             //   $('.handle').css('left', '300px');
@@ -131,7 +126,9 @@ updateBoard();
              }
             }}
 
-  positionBoard();
+ positionBoard();
+
+
     
 //--------------Here to turn it from empty beer to full beer when the goal is achieved----------
     //  if(keg.positionX === beer.positionX && keg.positionY === beer.positionY){
