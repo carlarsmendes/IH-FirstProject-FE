@@ -1,3 +1,58 @@
+html,body{
+    background-color: #414042;
+    /* width:100vw;
+    height:100%; */
+}
+
+.intro-image{
+    background-image: url(../img/CoverImage.png);
+    background-size:100% 100%;
+    width: 80vw;
+    min-width:500px;
+    max-width:700px;
+    height:60vw;
+    min-height:400px;
+    max-height:500px;
+    margin: 4vw auto;
+    /* border:3px solid yellow; */
+    padding:2vw;    
+}
+
+.intro-container button{
+    width:40vw;
+    margin:40px auto;
+    text-align:center;
+    border:4px solid rgb(224, 147, 21);
+    color:black;
+    background-color:rgb(224, 147, 21);
+    opacity: 0.7;
+    cursor: pointer;
+    font-size:40px;
+    padding:20px;
+    border-radius: 15px;
+    max-width: 650px;
+    min-width:400px;
+}
+
+.intro-container button:hover{
+    color:black;
+    background-color:rgb(156, 99, 6);
+    border:4px solid rgb(156, 99, 6);
+    
+}
+.intro-container button a{
+    text-decoration: none;
+    color:white;
+}
+
+
+
+.intro-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .board-container{
     width:45vw;
     height:30vw;
@@ -6,7 +61,10 @@
     /* background-color: transparent; */
     background-color: #414042;
     padding:0;
+    margin: 0 auto;
 }
+
+
 
 /* ----------GAME IMAGES----------------- */
 
@@ -20,6 +78,7 @@
     margin:0;
     background-size: 100% 100%;
     /* border: 3px yellow solid; */
+    
 }
 
 .player{
@@ -43,5 +102,6 @@
 }
 
 .no-tile{
-    background-color: #414042
+    background-color: #414042;
+    background-image:none;
 }
