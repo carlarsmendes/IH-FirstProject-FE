@@ -1,5 +1,7 @@
 
 const $player = document.querySelector(".player");
+
+
 const $board = document.querySelector(".board-container");
 
 ////HERE FOR DEBUGGING AND TESTING
@@ -13,8 +15,8 @@ board = [
     ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
     ];
 
-const $boardWidth = $board.offsetWidth
-const $boardHeight = $board.offsetHeight
+const $boardWidth = $board.scrollWidth
+const $boardHeight = $board.scrollWidth
 
 // Some constants
 const NB_OF_TILES_WIDTH = 9
@@ -27,7 +29,7 @@ const TILE_SIZE_HEIGHT = $boardWidth / NB_OF_TILES_HEIGHT
 //should I have a new game for each level?
 //should I have a player class? or shoud always be the same? should player be a part of the Game class, or separate?
 
-let game1 = new Game(9,6,2,2);  //this should be the initial sizes and also the initial position of the player
+let game1 = new Game(9,6,7,2);  //this should be the initial sizes and also the initial position of the player
 
 window.addEventListener("keydown", function onEvent(event) {
     if (event.key === "ArrowLeft") {
@@ -116,8 +118,8 @@ updateBoard();
         for( var i = 0; i < NB_OF_TILES_WIDTH; i++ ) {  //BUG::   only works when the numbers with/height are inverted
             for( var j = 0; j < NB_OF_TILES_HEIGHT; j++ ) { //BUG::   only works when the numbers with/height are inverted
             
-              $("#" + i + "-" + j  ).css("left" , i*TILE_SIZE_WIDTH+"px");
-              $( "#" + i + "-" + j  ).css("top", j*TILE_SIZE_HEIGHT+"px");
+              $("#" + i + "-" + j  ).css("left" , i*5+"vw");
+              $( "#" + i + "-" + j  ).css("top", j*5+"vw");
             //   $( "#" + i + "-" + j  ).css("width", TILE_SIZE_WIDTH+"px");
             //   $( "#" + i + "-" + j  ).css("height", TILE_SIZE_HEIGHT+"px");
             //   $( '#0-5' ).css('top', '300px')
@@ -128,7 +130,13 @@ updateBoard();
 
  positionBoard();
 
+function initialSetup(){
+    structureCreation();
+    updateBoard();
+    positionBoard();
+}
 
+initialSetup();
     
 //--------------Here to turn it from empty beer to full beer when the goal is achieved----------
     //  if(keg.positionX === beer.positionX && keg.positionY === beer.positionY){

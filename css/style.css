@@ -1,10 +1,10 @@
 .board-container{
     width:45vw;
-    height:45vw;
+    height:30vw;
     border:3px solid black;
     position:relative;
-    background-color: transparent;
-    /* background-color: #414042; */
+    /* background-color: transparent; */
+    background-color: #414042;
     padding:0;
 }
 
@@ -15,11 +15,11 @@
     padding:0;
     text-align:center;
     background-color: transparent;
-    width: 3.5vw;
-    height: 3.5vw;
+    width: 5vw;
+    height: 5vw;
     margin:0;
     background-size: 100% 100%;
-    border: 3px yellow solid;
+    /* border: 3px yellow solid; */
 }
 
 .player{
