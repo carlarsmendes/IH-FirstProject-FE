@@ -16,7 +16,9 @@
     background-color: transparent;
     width: 3.5vw;
     height: 3.5vw;
-    margin:0
+    margin:0;
+    background-size: 100% 100%;
+    border: 3px yellow solid;
 }
 
 .player{
@@ -40,5 +42,5 @@
 }
 
 .no-tile{
-    background-image: none
+    background-color: #414042
 }
