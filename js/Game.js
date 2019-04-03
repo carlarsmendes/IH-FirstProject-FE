@@ -206,7 +206,6 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                 this.player.y = this.player.y-1;
                 this.board[(this.playerVariable[0]-2)][this.playerVariable[1]]="K";
                 this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
-                
                 console.log("Looking UP there's a keg");
                 initialSetup();    
             break;
@@ -231,10 +230,10 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
         this.player.direction = 'down'
         initialSetup();
         console.log(this.board);
-
             // $( ".player" ).css("top", this.player.y*5+"vw");
+            //----INTERACTIONS CONDITIONS ETWEEN PLAYER AND OTHER ELEMENTS----
             switch (this.board[this.player.y+1][this.player.x])
-     
+
             {
                 case "T": 
                     this.board[this.player.y+1][this.player.x]="T";
@@ -248,9 +247,10 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                 break;
                 case "K": 
                     this.playerVariable = [this.player.y,this.player.x];
-                    this.board[this.playerVariable[0]][(this.playerVariable[1])]="P";
+                    this.board[this.playerVariable[0]+1][(this.playerVariable[1])]="P";
                     this.player.y = this.player.y+1;
-                    this.board[this.playerVariable[0]][(this.playerVariable[1])]="K";
+                    this.board[(this.playerVariable[0]+2)][this.playerVariable[1]]="K";
+                    this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
                     console.log("Looking DOWN there's a keg");
                     initialSetup();    
                 break;
@@ -265,11 +265,8 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                 default: 
                     console.log("Looking DOWN and feeling LOST");  
                 }
-    
 
-
-
-
+            
     }
 
 
