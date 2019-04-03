@@ -38,8 +38,14 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
         ["T", "E", "E", "E", "E", "E", "E", "P", "T"],     
         ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
         ];
-
-        
+    this.originalBoard= [
+        ["E", "T", "T", "T", "T", "T", "E", "E", "E"],
+        ["T", "T", "E", "E", "E", "T", "T", "T", "T"],
+        ["T", "E", "E", "E", "E", "E", "K", "E", "T"],
+        ["T", "E", "E", "E", "B", "E", "K", "E", "T"],
+        ["T", "E", "E", "E", "E", "E", "E", "P", "T"],     
+        ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
+        ];
 
 
     this.player = { //this defines the player and its initial position. should be diferent for each level, so should 
@@ -52,7 +58,16 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
     //     y: 2, //3 for testing// let tiles1 = []
     // }
 }
-
+    countKegs(){
+        this.numberKegs = 0;  
+        for(let x = 0 ; x < this.board.length ; x++){
+                for(let y = 0 ; y < this.board[x].length ; y++){
+            if (this.board[x][y] === "K"){
+                this.numberKegs++;
+            } 
+    }}
+        return this.numberKegs
+    }
 
     //Player movements and also the interactions with the kegs
     movePlayerLeft(){
@@ -73,6 +88,7 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                         this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="PB";
                         this.player.x = this.player.x-1;
                         this.board[this.playerVariable[0]][(this.playerVariable[1])]="E"
+                        
                         console.log("on my left there is a beer");
                         initialSetup();   
                     break;
@@ -101,19 +117,40 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                             this.playerVariable = [this.player.y,this.player.x];
                             this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="P";
                             this.player.x = this.player.x-1;
-                            this.board[this.playerVariable[0]][(this.playerVariable[1]-2)]="KB";
+                            this.board[this.playerVariable[0]][(this.playerVariable[1]-2)]="KB";//HERE ADD CLASS
                             this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
                             initialSetup();
                         }
+                        else if(this.board[this.player.y][this.player.x-1]==="K" && 
+                        this.board[this.player.y][this.player.x+1]==="PB") {
+                        this.playerVariable = [this.player.y,this.player.x];
+                        this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="P";
+                        this.player.x = this.player.x-1;
+                        this.board[this.playerVariable[0]][(this.playerVariable[1]-2)]="K";
+                        this.board[this.playerVariable[0]][(this.playerVariable[1])]="B";
+                            // this.player.x = this.player.x-1;
+                            console.log("ON MY RIGHT THERE'S AN EMPTY BEER");
+                            initialSetup()}
+
                         else {
-                    this.playerVariable = [this.player.y,this.player.x];
-                    this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="P";
-                    this.player.x = this.player.x-1;
-                    this.board[this.playerVariable[0]][(this.playerVariable[1]-2)]="K";
-                    this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
-                        // this.player.x = this.player.x-1;
-                        console.log("on my left there is a keg");
-                        initialSetup()};
+                            this.playerVariable = [this.player.y,this.player.x];
+                            this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="P";
+                            this.player.x = this.player.x-1;
+                            this.board[this.playerVariable[0]][(this.playerVariable[1]-2)]="K";
+                            initialSetup();
+                            // this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
+
+                            if(this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])]==="B"){
+                                this.board[this.playerVariable[0]][(this.playerVariable[1])]="B";
+                                initialSetup();}
+                                else {
+                                     this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
+                                     initialSetup();}
+                                    
+                                // this.player.x = this.player.x-1;
+                                console.log("on my left there is a keg");
+                                
+                            };
 
                     break;
                     case "E": 
@@ -125,20 +162,48 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                         console.log("on my left there is empty space");
                         initialSetup();
                     break;    
-                    // case "PB": 
-                    // this.playerVariable = [this.player.y,this.player.x];
-                    // this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="P";
-                    // this.player.x = this.player.x-1;
-                    // this.board[this.playerVariable[0]][(this.playerVariable[1])]="B";
-                    // // this.playerVariable = [this.player.y,this.player.x];
-                    // console.log("on my left there is a beer and a player");
-                    // initialSetup();
+                    case "KB": 
+                        this.playerVariable = [this.player.y,this.player.x];
+                        this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="PB";
+                        this.player.x = this.player.x-1;
+                        this.board[this.playerVariable[0]][(this.playerVariable[1]-2)]="K";
+                        this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
+                        initialSetup();
+                        console.log("on my left there is a beer and a player");
+                    initialSetup();
                     
-                    // break;
+                    break;
                     default: console.log("I don't know what to do with this going left");   
                     }
 
-                
+                    if(this.board[this.player.y][this.player.x]==="PB" && this.board[this.player.y][this.player.x-1]==="K"){
+                    //     console.log("INTERACTION WIH THE BEER FULL EMPTY")
+                        this.playerVariable = [this.player.y,this.player.x];
+                        this.board[this.playerVariable[0]][(this.playerVariable[1])]="PB";
+                        // this.player.x = this.player.x-1;
+                        this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="K";
+                        // this.board[this.playerVariable[0]][(this.playerVariable[1])]="B";
+                        initialSetup();
+                        console.log(this.board);
+                        // console.log("PB - Player inside the beer");
+
+                    }
+
+                    if(this.board[this.player.y][this.player.x-1]==="K"&& this.board[this.player.y][this.player.x]==="PB"){
+                        //     console.log("INTERACTION WIH THE BEER FULL EMPTY")
+                            this.playerVariable = [this.player.y,this.player.x];
+                            // this.board[this.playerVariable[0]][(this.playerVariable[1])]="PB";
+                            // this.player.x = this.player.x-1;
+                            // this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="K";
+                            this.board[this.playerVariable[0]][(this.playerVariable[1])]="PB";
+                            initialSetup();
+                            console.log(this.board);
+                            console.log("INSIDE THE BEER");}
+
+
+
+                //Here the case if you ARE in a PB or KG, then the player should appear again and also the empty beer should appear again (depending whether you're in one, or the other)
+
                     
 
             // }
@@ -205,9 +270,19 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                         this.board[this.playerVariable[0]][(this.playerVariable[1]+1)]="P";
                         this.player.x = this.player.x+1;
                         this.board[this.playerVariable[0]][(this.playerVariable[1]+2)]="K";
-                        this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
+                        // this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
                         console.log("on my right there is a keg");
-                        initialSetup();};
+                        initialSetup();
+                    
+                        if(this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])]==="B"){
+                            this.board[this.playerVariable[0]][(this.playerVariable[1])]="B";
+                            initialSetup();}
+                            else {
+                                 this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
+                                 initialSetup();}
+                    
+                    
+                    };
                     break;
                     case "E": 
                         this.playerVariable = [this.player.y,this.player.x];
@@ -217,8 +292,47 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                         initialSetup();
                         console.log("on my right there is empty space");
                     break;
+                    case "KB": 
+                        this.playerVariable = [this.player.y,this.player.x];
+                        this.board[this.playerVariable[0]][(this.playerVariable[1]+1)]="PB";
+                        this.player.x = this.player.x-1;
+                        this.board[this.playerVariable[0]][(this.playerVariable[1]+2)]="K";
+                        (this.playerVariable[1])="E";
+                        console.log("on my left there is a beer and a player");
+                    initialSetup();
+                    
+                    break;
                     default: console.log("I don't know what to do with this going right");   
                     }
+
+                    if(this.board[this.player.y][this.player.x]==="PB" && this.board[this.player.y][this.player.x+1]==="K"){
+                        //     console.log("INTERACTION WIH THE BEER FULL EMPTY")
+                            this.playerVariable = [this.player.y,this.player.x];
+                            this.board[this.playerVariable[0]][(this.playerVariable[1])]="PB";
+                            // this.player.x = this.player.x-1;
+                            this.board[this.playerVariable[0]][(this.playerVariable[1]+1)]="K";
+                            // this.board[this.playerVariable[0]][(this.playerVariable[1])]="B";
+                            initialSetup();
+                            console.log(this.board);
+                            // console.log("PB - Player inside the beer");
+    
+                        }
+    
+                        if(this.board[this.player.y][this.player.x+1]==="K"&& this.board[this.player.y][this.player.x]==="PB"){
+                            //     console.log("INTERACTION WIH THE BEER FULL EMPTY")
+                                this.playerVariable = [this.player.y,this.player.x];
+                                // this.board[this.playerVariable[0]][(this.playerVariable[1])]="PB";
+                                // this.player.x = this.player.x-1;
+                                // this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="K";
+                                this.board[this.playerVariable[0]][(this.playerVariable[1])]="PB";
+                                initialSetup();
+                                console.log(this.board);
+                                console.log("INSIDE THE BEER");}
+
+
+
+
+
     }
 
     movePlayerUp(){

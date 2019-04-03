@@ -103,6 +103,11 @@ html,body{
     opacity:0.6;
 }
 
+.player-beer{
+    background-image: url(../img/character-down.png);
+    filter: grayscale(100%);
+}
+
 .no-tile{
     background-color: #414042;
     background-image:none;

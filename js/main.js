@@ -78,11 +78,13 @@ function updateBoard() { //figure out wihout jQuery
     //     // $( ".tile static" ).removeClass( "player" );
     //     // $( ".tile static" ).removeClass( "unvisited" );
 
-
      $( ".game-tile" ).removeClass( "beer-empty static" );
      $( ".game-tile" ).removeClass( "player movable" );
      $( ".game-tile" ).removeClass( "keg movable" );
      $( ".game-tile" ).removeClass( "tile static" );
+     $( ".game-tile" ).removeClass( "beer-full static" );
+     $( ".game-tile" ).removeClass( "player-beer static" );
+
     //  $( ".game-tile" ).removeClass( "unvisited" );
 
 
@@ -104,7 +106,7 @@ function updateBoard() { //figure out wihout jQuery
             break;
             case "KB": $( "#" + i + "-" + j ).addClass("beer-full static");
             break;
-            case "PB": $( "#" + i + "-" + j ).addClass("beer-full static");
+            case "PB": $( "#" + i + "-" + j ).addClass("player-beer static");
             break;
             default: console.log("This tile is outside the game board");   
           }
