@@ -66,13 +66,15 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
 
     //Player movements and also the interactions with the kegs
     movePlayerLeft(){
-        let boardMinX = 0;
-        this.player.x = Math.max(this.player.x-1,boardMinX);
+        // let boardMinX = 0;
+        // this.player.x = Math.max(this.player.x-1,boardMinX);
+        // this.player.x = this.player.x-1;
         this.player.direction = 'left'
             // if (this.player.y === this.keg.y && this.keg.x === this.player.x+1){
             // this.moveKegLeft()} 
-            $( ".player" ).css("left", this.player.x*5+"vw");
+            // $( ".player" ).css("left", this.player.x*5+"vw");
             console.log("I'm activating the Player function");
+
             // $player.style.left = this.player.x*4+"vw"
             //This stores the player current variable in a variable
             // this.playerVariable = [this.player.y,this.player.x]; //(4,7)
@@ -85,86 +87,192 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
             // this.board[this.playerVariable[0]][this.playerVariable[1]] ="P";
                 // initialSetup();
                 console.log(this.board);
+
+                switch (this.board[this.player.y][this.player.x-1])
+                {
+                    case "T": 
+                        // doNotMove();--> How to write this function
+                        this.board[this.player.y][this.player.x-1]="T";
+                        console.log("on my left there is a tile");
+                        initialSetup()
+                    break;
+                    case "B": 
+                        // doNotMove();--> How to write this function
+                        this.board[this.player.y][this.player.x-1]="B";
+                        console.log("on my left there is a beer");
+                        initialSetup()
+                    break;
+                    case "K": 
+                        this.playerVariable = [this.player.y,this.player.x];
+                        this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="P";
+                        this.player.x = this.player.x-1;
+                        this.board[this.playerVariable[0]][(this.playerVariable[1]-2)]="K";
+                        this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
+                        // this.player.x = this.player.x-1;
+                        console.log("on my left there is a keg");
+                        initialSetup()
+
+                    break;
+                    case "E": 
+                        this.playerVariable = [this.player.y,this.player.x];
+                        this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="P";
+                        this.player.x = this.player.x-1;
+                        this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
+                        // this.playerVariable = [this.player.y,this.player.x];
+                        
+                        console.log("on my left there is empty space");
+                        initialSetup()
+                    break;
+                    default: console.log("I don't know what to do with this going left");   
+                    }
+
             // }
         }
         
     
 
     movePlayerRight(){
-        let boardMaxX = this.TOTAL_WIDTH-1;
-        this.player.x = Math.min(this.player.x+1,boardMaxX);
+        // let boardMaxX = this.TOTAL_WIDTH;
+        // this.player.x = Math.min(this.player.x+1,boardMaxX);
         this.player.direction = 'right';
         initialSetup();
+        console.log(this.board);
         // if (this.player.y === this.keg.y && this.keg.x === this.player.x-1){
         //     this.moveKegRight()}
             // console.log("I'm activating the PLayer function");
-            $( ".player" ).css("left", this.player.x*5+"vw");
+            // $( ".player" ).css("left", this.player.x*5+"vw");
+
+            switch (this.board[this.player.y][this.player.x+1])
+                {
+                    case "T": 
+                        // doNotMove();--> How to write this function
+                        this.board[this.player.y][this.player.x+1]="T";
+                        console.log("on my right there is a tile");
+                        initialSetup()
+                    break;
+                    case "B": 
+                        // doNotMove();--> How to write this function
+                        this.board[this.player.y][this.player.x+1]="B";
+                        console.log("on my right there is a beer");
+                        initialSetup()
+                    break;
+                    case "K": 
+                        this.playerVariable = [this.player.y,this.player.x];
+                        this.board[this.playerVariable[0]][(this.playerVariable[1])]="P";
+                        this.player.x = this.player.x+1;
+                        this.board[this.playerVariable[0]][(this.playerVariable[1])]="K";
+                        console.log("on my right there is a keg");
+                        initialSetup();
+                    break;
+                    case "E": 
+                        this.playerVariable = [this.player.y,this.player.x];
+                        this.board[this.playerVariable[0]][(this.playerVariable[1]+1)]="P";
+                        this.player.x = this.player.x+1;
+                        this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
+                        initialSetup();
+                        console.log("on my right there is empty space");
+                    break;
+                    default: console.log("I don't know what to do with this going right");   
+                    }
     }
 
     movePlayerUp(){
-        let boardMinY = 0;
-        this.player.y = Math.max(this.player.y-1,boardMinY);
+        // let boardMinY = 0;
+        // this.player.y = Math.max(this.player.y-1,boardMinY);
         this.player.direction = 'up';
         initialSetup();
+        console.log(this.board);
         // $player.style.top = moveY();//DOM Manipulation
         // if (this.player.x === this.keg.x && this.keg.y === this.player.y+1){
         //     this.moveKegUp()}
             // console.log("I'm activating the PLayer function");
-            $( ".player" ).css("top", this.player.y*5+"vw");
-        switch (board[this.player.y-1][this.player.x])
+            // $( ".player" ).css("top", this.player.y*5+"vw");
+        switch (this.board[this.player.y-1][this.player.x])
+     
         {
-            case "T": board[this.player.y][this.player.x]= board[this.player.y][this.player.x];
+            case "T": 
+                this.board[this.player.y-1][this.player.x]="T";
+                console.log("Looking UP there's a tile");
+                initialSetup();
             break;
-            case "B": board[this.player.y][this.player.x]= board[this.player.y][this.player.x];
+            case "B": 
+                this.board[this.player.y-1][this.player.x]="B";
+                console.log("Looking UP there's a beer");
+                initialSetup();
             break;
             case "K": 
-            board[this.player.y-1][this.player.x]="P";
-            board[this.player.y-2][this.player.x]="K";
+                this.playerVariable = [this.player.y,this.player.x];
+                this.board[this.playerVariable[0]-1][(this.playerVariable[1])]="P";
+                this.player.y = this.player.y-1;
+                this.board[(this.playerVariable[0]-2)][this.playerVariable[1]]="K";
+                this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
                 
+                console.log("Looking UP there's a keg");
+                initialSetup();    
             break;
-            case "E": board[this.player.y][this.player.x]= board[this.player.y][this.player.x];
+            case "E": 
+                this.playerVariable = [this.player.y,this.player.x];
+                this.board[this.playerVariable[0]-1][(this.playerVariable[1])]="P";
+                this.player.y = this.player.y-1;
+                this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
+                console.log("Looking UP there's an empty space");
+                initialSetup();
             break;
-            default: console.log("This tile is outside the game board");   
+            default: 
+                console.log("Looking UP and feeling LOST");  
             }
 
 
     }
 
     movePlayerDown(){ 
-        let boardMaxY = this.TOTAL_HEIGHT-1
-        this.player.y = Math.min(this.player.y+1,boardMaxY);
+        // let boardMaxY = this.TOTAL_HEIGHT-1
+        // this.player.y = Math.min(this.player.y+1,boardMaxY);
         this.player.direction = 'down'
         initialSetup();
-        // if (this.player.x === this.keg.x && this.keg.y === this.player.y-1){
-        //     this.moveKegDown()}
-            $( ".player" ).css("top", this.player.y*5+"vw");
-        
-            // console.log("I'm activating the PLayer function");
+        console.log(this.board);
+
+            // $( ".player" ).css("top", this.player.y*5+"vw");
+            switch (this.board[this.player.y+1][this.player.x])
+     
+            {
+                case "T": 
+                    this.board[this.player.y+1][this.player.x]="T";
+                    console.log("Looking DOWN there's a tile");
+                    initialSetup();
+                break;
+                case "B": 
+                    this.board[this.player.y+1][this.player.x]="B";
+                    console.log("Looking DOWN there's a beer");
+                    initialSetup();
+                break;
+                case "K": 
+                    this.playerVariable = [this.player.y,this.player.x];
+                    this.board[this.playerVariable[0]][(this.playerVariable[1])]="P";
+                    this.player.y = this.player.y+1;
+                    this.board[this.playerVariable[0]][(this.playerVariable[1])]="K";
+                    console.log("Looking DOWN there's a keg");
+                    initialSetup();    
+                break;
+                case "E": 
+                    this.playerVariable = [this.player.y,this.player.x];
+                    this.board[this.playerVariable[0]+1][(this.playerVariable[1])]="P";
+                    this.player.y = this.player.y+1;
+                    this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
+                    console.log("Looking DOWN there's an empty space");
+                    initialSetup();
+                break;
+                default: 
+                    console.log("Looking DOWN and feeling LOST");  
+                }
+    
+
+
+
+
     }
 
-    // moveKegLeft(){
-    //     let boardMinX = 2
-    //     this.keg.x = Math.max(this.keg.x-1,boardMinX);
-    //     // $( ".keg" ).css("left", this.player.y*5+"vw");    
-    //  }
 
-    // moveKegRight(){
-    //     let boardMaxX = this.TOTAL_WIDTH
-    //     this.keg.x = Math.min(this.keg.x+1,boardMaxX);
-    //     // $( ".keg" ).css("left", this.player.y*5+"vw");
-    // }
-
-    // moveKegUp(){
-    //     let boardMinY = 2
-    //     this.keg.y = Math.max(this.keg.y-1,boardMinY);
-    //     // $( ".keg" ).css("top", this.player.y*5+"vw");
-    // }
-
-    // moveKegDown(){
-    //     let boardMaxY = this.TOTAL_HEIGHT
-    //     this.keg.y = Math.min(this.keg.y+1,boardMaxY);
-    //     // $( ".keg" ).css("top", this.player.y*5+"vw");
-    // }
 
     moveY (){
         let measureY = 4*board.y ;
