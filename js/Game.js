@@ -31,8 +31,8 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
     // E = Empty
 
     this.board = [
-        ["E", "E", "T", "T", "T", "T", "E", "E", "E"],
-        ["T", "T", "T", "E", "E", "T", "T", "T", "T"],
+        ["E", "T", "T", "T", "T", "T", "E", "E", "E"],
+        ["T", "T", "E", "E", "E", "T", "T", "T", "T"],
         ["T", "E", "E", "E", "E", "E", "K", "E", "T"],
         ["T", "E", "T", "E", "E", "T", "K", "E", "T"],
         ["T", "E", "B", "E", "B", "T", "E", "P", "T"],     
@@ -199,9 +199,13 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
 
 
                         this.playerVariable = [this.player.y,this.player.x];
-                        this.board[this.playerVariable[0]][(this.playerVariable[1])]="P";
+                        this.board[this.playerVariable[0]][(this.playerVariable[1]+1)]="P";
                         this.player.x = this.player.x+1;
-                        this.board[this.playerVariable[0]][(this.playerVariable[1])]="K";
+                        this.board[this.playerVariable[0]][(this.playerVariable[1]+2)]="K";
+                        this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
+
+
+
                         console.log("on my right there is a keg");
                         initialSetup();
                     break;
