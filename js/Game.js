@@ -34,8 +34,8 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
         ["E", "T", "T", "T", "T", "T", "E", "E", "E"],
         ["T", "T", "E", "E", "E", "T", "T", "T", "T"],
         ["T", "E", "E", "E", "E", "E", "K", "E", "T"],
-        ["T", "E", "T", "E", "E", "T", "K", "E", "T"],
-        ["T", "E", "B", "E", "B", "T", "E", "P", "T"],     
+        ["T", "E", "B", "E", "B", "E", "K", "E", "T"],
+        ["T", "E", "E", "E", "E", "E", "E", "P", "T"],     
         ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
         ];
 
@@ -48,90 +48,73 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
         direction: "down",
         // img: src='../img/Beer_Full.svg'//how to look for the image?
     }
-    // this.keg = { //this defines the beers and their initial positions. should be diferent for each level, so should be variables. should be plent so they should be arrays
     //     x: 6, //3 for testing //let keg1 = [6,2],[6,3] 
     //     y: 2, //3 for testing// let tiles1 = []
     // }
 }
 
-// ---EXEMPLO DO JOAQUIM---
-        // this.storeVariable = [4, 7]
-        // this.board[this.storeVariable[0]][this.storeVariable[1]] = "E"
-        // this.storeVariable[0]--
-        // this.board[this.storeVariable[0]][this.storeVariable[1]] ="P"
-
-        // console.log(this.board)
-        // updateBoard()
-
 
     //Player movements and also the interactions with the kegs
     movePlayerLeft(){
-        // let boardMinX = 0;
-        // this.player.x = Math.max(this.player.x-1,boardMinX);
-        // this.player.x = this.player.x-1;
         this.player.direction = 'left'
-            // if (this.player.y === this.keg.y && this.keg.x === this.player.x+1){
-            // this.moveKegLeft()} 
             // $( ".player" ).css("left", this.player.x*5+"vw");
             console.log("I'm activating the Player function");
-
-            // $player.style.left = this.player.x*4+"vw"
-            //This stores the player current variable in a variable
-            // this.playerVariable = [this.player.y,this.player.x]; //(4,7)
-            // // if(this.board[(this.playerVariable[0]-1)][this.playerVariable[1]] ===  "E"){
-            //     //this writes "E" over the previous "P"
-            // this.board[this.playerVariable[0]][this.playerVariable[1]] ="E";
-            // //this changes the variable x of the stored variable
-            // this.playerVariable[1]--;
-            // //this changes "P" to its wanted location
-            // this.board[this.playerVariable[0]][this.playerVariable[1]] ="P";
-                // initialSetup();
-                console.log(this.board);
+            console.log(this.board);
 
                 switch (this.board[this.player.y][this.player.x-1])
                 {
-                    case "T": 
-                        // doNotMove();--> How to write this function
+                    case "T": //Not supposed to move the tile, or with the tile
                         this.board[this.player.y][this.player.x-1]="T";
                         console.log("on my left there is a tile");
                         initialSetup()
-                    
                     break;
                     case "B": 
-                        // doNotMove();--> How to write this function
-                        this.board[this.player.y][this.player.x-1]="B";
+                        this.playerVariable = [this.player.y,this.player.x];
+                        this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="PB";
+                        this.player.x = this.player.x-1;
+                        this.board[this.playerVariable[0]][(this.playerVariable[1])]="E"
                         console.log("on my left there is a beer");
-                        initialSetup()
+                        initialSetup();   
                     break;
                     case "K": 
-
-                    if(this.board[this.player.y][this.player.x-1]==="K" && 
-                    this.board[this.player.y][this.player.x-2]==="T"){
-                        console.log("there's a tile two cols ahead")
-                        this.board[this.player.y][this.player.x-1]==="K"
-                        this.board[this.player.y][this.player.x]==="P"
-                        this.board[this.player.y][this.player.x-2]="T"
-                        this.player.y = y
-                        initialSetup();}
-                    
                         if(this.board[this.player.y][this.player.x-1]==="K" && 
+                        this.board[this.player.y][this.player.x-2]==="T"){
+                            console.log("there's a tile two cols ahead")
+                            this.board[this.player.y][this.player.x-1]==="K"
+                            this.board[this.player.y][this.player.x]==="P"
+                            this.board[this.player.y][this.player.x-2]="T"
+                            this.player.y = y
+                            initialSetup();
+                        }
+                        else if(this.board[this.player.y][this.player.x-1]==="K" && 
                         this.board[this.player.y][this.player.x-2]==="K"){
                             console.log("there's a tile two cols ahead")
                             this.board[this.player.y][this.player.x-1]==="K"
                             this.board[this.player.y][this.player.x]==="P"
                             this.board[this.player.y][this.player.x-2]="K"
                             this.player.y = y
-                            initialSetup();}
-
-
-                        this.playerVariable = [this.player.y,this.player.x];
-                        this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="P";
-                        this.player.x = this.player.x-1;
-                        this.board[this.playerVariable[0]][(this.playerVariable[1]-2)]="K";
-                        this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
+                            initialSetup();
+                        }
+                        else if(this.board[this.player.y][this.player.x-1]==="K" && 
+                        this.board[this.player.y][this.player.x-2]==="B"){
+                            console.log("there's a tile two cols ahead")
+// -----------------WORK IN PROGRESS
+                            this.board[this.player.y][this.player.x-1]==="K"
+                            this.board[this.player.y][this.player.x]==="P"
+                            this.board[this.player.y][this.player.x-2]="K"
+// -----------------WORK IN PROGRESS
+                            this.player.y = y
+                            initialSetup();
+                        }
+                        else {
+                    this.playerVariable = [this.player.y,this.player.x];
+                    this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="P";
+                    this.player.x = this.player.x-1;
+                    this.board[this.playerVariable[0]][(this.playerVariable[1]-2)]="K";
+                    this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
                         // this.player.x = this.player.x-1;
                         console.log("on my left there is a keg");
-                        initialSetup();
+                        initialSetup()};
 
                     break;
                     case "E": 
@@ -140,10 +123,42 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                         this.player.x = this.player.x-1;
                         this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
                         // this.playerVariable = [this.player.y,this.player.x];
+
+
                         
                         console.log("on my left there is empty space");
                         initialSetup();
-                    break;
+                    break;    
+                    // case "PB": 
+                    // this.playerVariable = [this.player.y,this.player.x];
+                    // this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="P";
+                    // this.player.x = this.player.x-1;
+                    // this.board[this.playerVariable[0]][(this.playerVariable[1])]="B";
+                    // // this.playerVariable = [this.player.y,this.player.x];
+                    // console.log("on my left there is a beer and a player");
+                    // initialSetup();
+                    
+                    // break;
+                    default: console.log("I don't know what to do with this going left");   
+                    }
+
+                    switch (this.board[this.player.y][this.player.x])
+                {
+                    // case "PB": 
+                    //     // doNotMove();--> How to write this function
+
+                    //     this.playerVariable = [this.player.y,this.player.x];
+                    //     // this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="P";
+                    //     this.player.x = this.player.x-1;
+                    //     this.board[this.playerVariable[0]][(this.playerVariable[1]+1)]="B";
+                    //     this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="E";
+                    //     this.board[this.playerVariable[0]][(this.playerVariable[1]+1)]="P";
+
+                    //     console.log("went left after on top of beer");
+                    //     initialSetup()
+                    
+                    
+                    // break;
                     default: console.log("I don't know what to do with this going left");   
                     }
 
@@ -255,7 +270,7 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                     this.player.x = x;
                     initialSetup();}
                 
-                if(this.board[this.player.y-1][this.player.x]==="K" && 
+                else if(this.board[this.player.y-1][this.player.x]==="K" && 
                 this.board[this.player.y-2][this.player.x]==="K"){
                     console.log("there's a tile two cols ahead")
                     this.board[this.player.y-1][this.player.x]==="K"
@@ -263,13 +278,25 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                     this.player.x = x;
                     initialSetup();}
 
-                this.playerVariable = [this.player.y,this.player.x];
+                else if(this.board[this.player.y-1][this.player.x]==="K" && 
+                this.board[this.player.y-2][this.player.x]==="B"){
+                    console.log("there's a BEER two cols ahead")
+                    this.playerVariable = [this.player.y,this.player.x];
+                    this.board[this.playerVariable[0]-2][(this.playerVariable[1])]="KB";
+                    this.player.y = this.player.y+1;
+                    this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
+                    this.board[this.playerVariable[0]-1][(this.playerVariable[1])]="P";
+                    initialSetup();
+                }
+
+                else {this.playerVariable = [this.player.y,this.player.x];
                 this.board[this.playerVariable[0]-1][(this.playerVariable[1])]="P";
                 this.player.y = this.player.y-1;
                 this.board[(this.playerVariable[0]-2)][this.playerVariable[1]]="K";
                 this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
                 console.log("Looking UP there's a keg");
-                initialSetup();    
+                initialSetup()
+                };    
             break;
             case "E": 
                 this.playerVariable = [this.player.y,this.player.x];
@@ -311,28 +338,42 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
 
                 if(this.board[this.player.y+1][this.player.x]==="K" && 
                 this.board[this.player.y+2][this.player.x]==="T"){
-                    console.log("there's a tile two cols ahead")
+                    console.log("there's a TILE two cols ahead")
                     this.board[this.player.y+1][this.player.x]==="K"
                     this.board[this.player.y][this.player.x]==="P"
                     this.player.x = x;
                     initialSetup();}
                 
-                if(this.board[this.player.y+1][this.player.x]==="K" && 
+                else if(this.board[this.player.y+1][this.player.x]==="K" && 
                 this.board[this.player.y+2][this.player.x]==="K"){
-                    console.log("there's a tile two cols ahead")
+                    console.log("there's a KEG two cols ahead")
                     this.board[this.player.y+1][this.player.x]==="K"
                     this.board[this.player.y][this.player.x]==="P"
                     this.player.x = x;
                     initialSetup();}
 
-
+                else if(this.board[this.player.y+1][this.player.x]==="K" && 
+                    this.board[this.player.y+2][this.player.x]==="B"){
+                    console.log("there's a BEER two cols ahead")
                     this.playerVariable = [this.player.y,this.player.x];
-                    this.board[this.playerVariable[0]+1][(this.playerVariable[1])]="P";
+                    this.board[this.playerVariable[0]+2][(this.playerVariable[1])]="KB";
                     this.player.y = this.player.y+1;
-                    this.board[(this.playerVariable[0]+2)][this.playerVariable[1]]="K";
                     this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
-                    console.log("Looking DOWN there's a keg");
-                    initialSetup();    
+                    this.board[this.playerVariable[0]+1][(this.playerVariable[1])]="P";
+
+                    // this.board[this.player.y+1][this.player.x]==="KB"
+                    // this.board[this.player.y][this.player.x]==="P"
+                    initialSetup();}
+                   else {
+
+                this.playerVariable = [this.player.y,this.player.x];
+                this.board[this.playerVariable[0]+1][(this.playerVariable[1])]="P";
+                this.player.y = this.player.y+1;
+                this.board[(this.playerVariable[0]+2)][this.playerVariable[1]]="K";
+                this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
+                console.log("Looking DOWN there's a keg");
+                initialSetup(); }
+
                 break;
                 case "E": 
                     this.playerVariable = [this.player.y,this.player.x];

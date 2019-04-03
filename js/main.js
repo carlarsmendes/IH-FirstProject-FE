@@ -102,6 +102,10 @@ function updateBoard() { //figure out wihout jQuery
             break;
             case "E": $( "#" + i + "-" + j ).addClass("no-tile static");
             break;
+            case "KB": $( "#" + i + "-" + j ).addClass("beer-full static");
+            break;
+            case "PB": $( "#" + i + "-" + j ).addClass("beer-full static");
+            break;
             default: console.log("This tile is outside the game board");   
           }
          }

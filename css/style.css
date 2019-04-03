@@ -56,12 +56,13 @@ html,body{
 .board-container{
     width:45vw;
     height:30vw;
-    border:3px solid black;
+    /* border:3px solid black; */
     position:relative;
     /* background-color: transparent; */
     background-color: #414042;
     padding:0;
     margin: 0 auto;
+    margin-top:10vh;
 }
 
 
@@ -86,7 +87,7 @@ html,body{
 }
 
 .keg{
-    background-image: url(../img/Keg.svg)
+    background-image: url(../img/Keg.svg);
 }
 
 .tile{
@@ -94,11 +95,12 @@ html,body{
 }
 
 .beer-full{
-    background-image: url(../img/Beer_Full.svg)
+    background-image: url(../img/Beer_Full.svg);
 }
 
 .beer-empty{
-    background-image: url(../img/Beer_Empty.svg)
+    background-image: url(../img/Beer_Empty.svg);
+    opacity:0.6;
 }
 
 .no-tile{
