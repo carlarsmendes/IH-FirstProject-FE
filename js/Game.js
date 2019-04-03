@@ -30,22 +30,15 @@ class Game {
         // E = Empty
 
         this.board = [
-            ["E", "T", "T", "T", "T", "T", "E", "E", "E"],
-            ["T", "T", "E", "E", "E", "T", "T", "T", "T"],
+            ["E", "E", "T", "T", "T", "T", "E", "E", "E"],
+            ["T", "T", "T", "E", "E", "T", "T", "T", "T"],
             ["T", "E", "E", "E", "E", "E", "K", "E", "T"],
-            ["T", "E", "B", "E", "B", "E", "K", "P", "T"],
-            ["T", "E", "E", "E", "E", "E", "T", "E", "T"],
+            ["T", "E", "T", "E", "E", "T", "K", "P", "T"],
+            ["T", "E", "B", "E", "B", "T", "E", "E", "T"],
             ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
         ];
 
-        this.originalBoard = [
-            ["E", "T", "T", "T", "T", "T", "E", "E", "E"],
-            ["T", "T", "E", "E", "E", "T", "T", "T", "T"],
-            ["T", "E", "E", "E", "E", "E", "K", "E", "T"],
-            ["T", "E", "B", "E", "B", "E", "K", "E", "T"],
-            ["T", "E", "E", "E", "E", "E", "T", "P", "T"],
-            ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
-        ];
+        this.originalBoard = [...this.board];
 
 
         this.player = { //this defines the player and its initial position. should be diferent for each level, so should 
@@ -132,7 +125,7 @@ class Game {
                     initialSetup();
                 }
                 else if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
-                    this.board[this.getPlayerY()][this.getPlayerX() - 2] === "K") {
+                    this.board[this.getPlayerY()][this.getPlayerX() - 2] === "K"){
                     console.log("there's a tile two cols ahead")
                     this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K"
                     this.board[this.getPlayerY()][this.getPlayerX()] === "P"

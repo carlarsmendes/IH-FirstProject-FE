@@ -83,7 +83,7 @@ html,body{
 }
 
 .player{
-    background-image: url(../img/character-down.png);
+    background-image: url(../img/Ironhacker-front.svg);
 }
 
 .keg{
@@ -100,12 +100,12 @@ html,body{
 
 .beer-empty{
     background-image: url(../img/Beer_Empty.svg);
-    opacity:0.6;
+    /* opacity:0.6; */
 }
 
 .player-beer{
-    background-image: url(../img/character-down.png);
-    filter: grayscale(100%);
+    background-image: url(../img/Ironhacker-Front-Caneca-05.svg);
+    /* filter: grayscale(100%); */
 }
 
 .no-tile{
