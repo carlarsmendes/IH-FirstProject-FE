@@ -95,6 +95,7 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                         this.board[this.player.y][this.player.x-1]="T";
                         console.log("on my left there is a tile");
                         initialSetup()
+                    
                     break;
                     case "B": 
                         // doNotMove();--> How to write this function
@@ -103,6 +104,26 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                         initialSetup()
                     break;
                     case "K": 
+
+                    if(this.board[this.player.y][this.player.x-1]==="K" && 
+                    this.board[this.player.y][this.player.x-2]==="T"){
+                        console.log("there's a tile two cols ahead")
+                        this.board[this.player.y][this.player.x-1]==="K"
+                        this.board[this.player.y][this.player.x]==="P"
+                        this.board[this.player.y][this.player.x-2]="T"
+                        this.player.y = y
+                        initialSetup();}
+                    
+                        if(this.board[this.player.y][this.player.x-1]==="K" && 
+                        this.board[this.player.y][this.player.x-2]==="K"){
+                            console.log("there's a tile two cols ahead")
+                            this.board[this.player.y][this.player.x-1]==="K"
+                            this.board[this.player.y][this.player.x]==="P"
+                            this.board[this.player.y][this.player.x-2]="K"
+                            this.player.y = y
+                            initialSetup();}
+
+
                         this.playerVariable = [this.player.y,this.player.x];
                         this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="P";
                         this.player.x = this.player.x-1;
@@ -110,7 +131,7 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                         this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
                         // this.player.x = this.player.x-1;
                         console.log("on my left there is a keg");
-                        initialSetup()
+                        initialSetup();
 
                     break;
                     case "E": 
@@ -121,10 +142,12 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                         // this.playerVariable = [this.player.y,this.player.x];
                         
                         console.log("on my left there is empty space");
-                        initialSetup()
+                        initialSetup();
                     break;
                     default: console.log("I don't know what to do with this going left");   
                     }
+
+                    
 
             // }
         }
@@ -157,6 +180,24 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                         initialSetup()
                     break;
                     case "K": 
+
+                    if(this.board[this.player.y][this.player.x+1]==="K" && 
+                    this.board[this.player.y][this.player.x+2]==="T"){
+                        console.log("there's a tile two cols ahead")
+                        this.board[this.player.y][this.player.x+1]==="K"
+                        this.board[this.player.y][this.player.x]==="P"
+                        this.player.y = y;
+                        initialSetup();}
+                    
+                        if(this.board[this.player.y][this.player.x+1]==="K" && 
+                        this.board[this.player.y][this.player.x+2]==="K"){
+                            console.log("there's a tile two cols ahead")
+                            this.board[this.player.y][this.player.x+1]==="K"
+                            this.board[this.player.y][this.player.x]==="P"
+                            this.player.y = y;
+                            initialSetup();}
+
+
                         this.playerVariable = [this.player.y,this.player.x];
                         this.board[this.playerVariable[0]][(this.playerVariable[1])]="P";
                         this.player.x = this.player.x+1;
@@ -201,6 +242,23 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                 initialSetup();
             break;
             case "K": 
+
+                if(this.board[this.player.y-1][this.player.x]==="K" && 
+                this.board[this.player.y-2][this.player.x]==="T"){
+                    console.log("there's a tile two cols ahead")
+                    this.board[this.player.y-1][this.player.x]==="K"
+                    this.board[this.player.y][this.player.x]==="P"
+                    this.player.x = x;
+                    initialSetup();}
+                
+                if(this.board[this.player.y-1][this.player.x]==="K" && 
+                this.board[this.player.y-2][this.player.x]==="K"){
+                    console.log("there's a tile two cols ahead")
+                    this.board[this.player.y-1][this.player.x]==="K"
+                    this.board[this.player.y][this.player.x]==="P"
+                    this.player.x = x;
+                    initialSetup();}
+
                 this.playerVariable = [this.player.y,this.player.x];
                 this.board[this.playerVariable[0]-1][(this.playerVariable[1])]="P";
                 this.player.y = this.player.y-1;
@@ -246,6 +304,24 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                     initialSetup();
                 break;
                 case "K": 
+
+                if(this.board[this.player.y+1][this.player.x]==="K" && 
+                this.board[this.player.y+2][this.player.x]==="T"){
+                    console.log("there's a tile two cols ahead")
+                    this.board[this.player.y+1][this.player.x]==="K"
+                    this.board[this.player.y][this.player.x]==="P"
+                    this.player.x = x;
+                    initialSetup();}
+                
+                if(this.board[this.player.y+1][this.player.x]==="K" && 
+                this.board[this.player.y+2][this.player.x]==="K"){
+                    console.log("there's a tile two cols ahead")
+                    this.board[this.player.y+1][this.player.x]==="K"
+                    this.board[this.player.y][this.player.x]==="P"
+                    this.player.x = x;
+                    initialSetup();}
+
+
                     this.playerVariable = [this.player.y,this.player.x];
                     this.board[this.playerVariable[0]+1][(this.playerVariable[1])]="P";
                     this.player.y = this.player.y+1;
@@ -265,6 +341,8 @@ constructor(TOTAL_WIDTH,TOTAL_HEIGHT,playerStartPositionX,playerStartPositionY)
                 default: 
                     console.log("Looking DOWN and feeling LOST");  
                 }
+
+
 
             
     }
