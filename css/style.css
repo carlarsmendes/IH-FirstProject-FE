@@ -168,17 +168,20 @@ body{
 #board4-container{
     width:45vw;
     /* height:30vw; */
-    /* border:3px solid black; */
+    /* border:3px solid greenyellow; */
     position:relative;
     /* background-color: transparent; */
     background-color: #414042;
     padding:0;
     margin: 2vw auto;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 #board4-container p{
     font-size:40px;
-    font-family:sans-serif;
+    font-family: monospace;
     text-align: center;
     color:white;
     /* border:3px solid black; */
@@ -186,7 +189,7 @@ body{
     /* background-color: transparent; */
     background-color: #414042;
     padding:0;
-    margin: 2vw auto;
+    margin: 0.5vw auto;
     /* border: 3px solid greenyellow; */
 }
 
@@ -264,7 +267,7 @@ body{
     display:flex;
     flex-direction: column;
     justify-content: space-evenly;
-    border: 3px solid red;
+    /* border: 3px solid red; */
     padding:0;
     margin:0 auto;
 }
@@ -286,7 +289,7 @@ body{
     justify-content: center;
     width:25vw;
     padding:2vw;
-    border: 3px solid orange;
+    /* border: 3px solid orange; */
     min-width:300px;
     align-content: center;
 }

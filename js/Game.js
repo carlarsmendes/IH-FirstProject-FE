@@ -148,9 +148,8 @@ class Game {
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] = "KB"
                     initialSetup();
                 }
-
                 else if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
-                    this.board[this.getPlayerY()][this.getPlayerX() - 2] === "B") {
+                    this.board[this.getPlayerY()][this.getPlayerX() - 2] === "B") { 
         
                     this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "P";
