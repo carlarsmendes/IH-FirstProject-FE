@@ -4,6 +4,14 @@ html,body{
     height:100%; */
 }
 
+body{
+    display:flex;
+    justify-content: center;
+    padding:0;
+    margin:0;
+}
+
+/* -------INTRO GAME SCREEN STYLES--------- */
 .intro-image{
     background-image: url(../img/CoverImage.png);
     background-size:100% 100%;
@@ -45,12 +53,71 @@ html,body{
     color:white;
 }
 
-
-
 .intro-container{
     display:flex;
     flex-direction: column;
     justify-content: center;
+}
+
+
+
+/* -------LEVEL GAME SCREEN STYLES--------- */
+
+.btn {
+    width:90%;
+    margin:10px auto;
+    text-align:center;
+    border:4px solid rgb(224, 147, 21);
+    color:white;
+    background-color:rgb(224, 147, 21);
+    cursor: pointer;
+    font-size:20px;
+    padding:10px;
+    border-radius: 15px;
+    max-width: 500px;
+    min-width:100px;
+}
+
+.btn a {
+    text-decoration: none;
+    color:rgb(250, 250, 250);}
+
+.btn:hover {
+    color:white;
+    background-color:rgb(156, 99, 6);
+    border:4px solid rgb(156, 99, 6);
+}
+
+.flex-container{
+    display:flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    border: 3px solid red;
+    padding:2vw;
+    margin:5% auto;
+}
+
+.side-info-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width:25vw;
+    padding:2vw;
+    border: 3px solid orange;
+    min-width:300px;
+    align-content: center;
+}
+
+.side-info-container img{
+    /* height:45vw;
+     */
+     width: 40vw;
+     max-width:90%;
+    /* max-height:300px;
+    max-width:380px; */
+    border: 3px solid purple;
+    margin:5% auto;
+    
 }
 
 .board-container{
@@ -61,15 +128,34 @@ html,body{
     /* background-color: transparent; */
     background-color: #414042;
     padding:0;
-    margin: 0 auto;
-    margin-top:10vh;
+    margin: 2vw auto;
+    border: 3px solid greenyellow;
 }
 
+#board2-container{
+    /* width:100%; */
+    height:100%;
+    /* border:3px solid black; */
+    position:relative;
+    /* background-color: transparent; */
+    background-color: #414042;
+    padding:0;
+    margin: 2vw auto;
+    border: 3px solid greenyellow;
+    text-align: center
+}
+
+.game-flex-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 3px solid yellow;
+}
 
 
 /* ----------GAME IMAGES----------------- */
 
-.movable, .static{
+.board-container .movable, .static{
     position:absolute;
     padding:0;
     text-align:center;
@@ -82,8 +168,16 @@ html,body{
     
 }
 
+#board2-container .movable, #board2-container .static{
+    width: 5vw;
+    height: 5vw;
+    margin:0;
+    background-size: 100% 100%;
+    /* border: 3px yellow solid; */
+}
+
 .player{
-    background-image: url(../img/character-down.png);
+    background-image: url(../img/Ironhacker-front.svg);
 }
 
 .keg{
@@ -100,15 +194,54 @@ html,body{
 
 .beer-empty{
     background-image: url(../img/Beer_Empty.svg);
-    opacity:0.6;
+    /* opacity:0.6; */
 }
 
 .player-beer{
-    background-image: url(../img/character-down.png);
-    filter: grayscale(100%);
+    background-image: url(../img/Ironhacker-Front-Caneca-05.svg);
+    /* filter: grayscale(100%); */
 }
 
 .no-tile{
     background-color: #414042;
     background-image:none;
 }
+
+
+/* ----para ecrãs <900 criar uma nova view------- */
+
+@media only screen and (max-width: 768px) {
+    /* For mobile: */
+  .flex-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 3px solid red;
+    padding:0;
+    margin:0 auto;
+}
+
+.btn {
+    width:30vw;
+    margin:5px auto;
+    font-size:16px;
+    padding:5px;
+    border-radius: 15px;
+    max-width: 500px;
+    min-width:100px;
+}
+
+
+.side-info-container{
+    display:flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    width:25vw;
+    padding:2vw;
+    border: 3px solid orange;
+    min-width:300px;
+    align-content: center;
+}
+
+  }
+  

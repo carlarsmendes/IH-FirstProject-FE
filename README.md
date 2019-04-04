@@ -26,7 +26,7 @@ All the rules remained, since there would be no point in doing it in a different
 
 <h3><b>---Challenges ahead----</b></h3>
 <ol> 
-  <li>Should it be DOM manipulation or Canvas? DOM. 
+  <li>Should it be DOM manipulation or Canvas? -> DOM. 
   <li>One page per level.</li>
   <li>Which classes should be created? One clas: Game, including the player and the board</li>
   <li>Define MVP: One level</li>
@@ -39,11 +39,12 @@ All the rules remained, since there would be no point in doing it in a different
   <li>Create the GitHUb repository & ReadMe intro <b>-DONE-</b></li>
   <li>Build the foundation files of HTML, CSS and JS <b>-DONE-</b></li>
   <li>Created the design for: Walls; Empty beer; Filled beer; Beer Keg; player <b>-DONE-</b> (except player) </li>
-  <li>Define the main functions and variables: <code>moveLeft()</code> <code>moveRight()</code> <code>moveUp()</code> <code>moveDown()</code> <code>levelUp()</code> <code>resetLevel()</code> </li> <b>-DONE-</b> (except levelUp and resetLevel)
-  <li>Test the main functions </li>
+  <li>Define the main functions and variables: <code>moveLeft()</code> <code>moveRight()</code> <code>moveUp()</code> <code>moveDown()</code> <b>-DONE-</b>
+  <li>Define <code>levelUp()</code> <code>resetLevel()</code> </li>
+  <li>Test the main functions </li> </li> <b>-DONE-</b>
   <li>Make it visual </li> <b>-DONE-</b>
-  <li>Make it move visually </li>
-  <li>Fix the bugs </li>
+  <li>Make it move visually </li> </li> <b>-DONE-</b>
+  <li>Fix the bugs </li> </li> <i>-IN CONSTRUCTION-</i>
   <li>Try for another level</li>
   <li>Design of webpages: Main screen, level up, First screen of welcome & Playgame </li>
 </ol>
