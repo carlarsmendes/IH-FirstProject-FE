@@ -60,6 +60,21 @@ game2.board = [
 
 game2.originalBoard = [...game2.board];
 
+// game2.fixedItemsBoard = [
+//     ["T", "T", "T", "T", "T", "T","T","T"],
+//     ["T", "E", "E", "P", "E", "E","E","T"],
+//     ["T", "E", "E", "T", "E", "E","E","T"],
+//     ["T", "T", "E", "E", "E", "E","T","T"],
+//     ["E", "T", "E", "E", "E", "B","T","T"],
+//     ["E", "T", "T", "E", "B", "T","T","E"],
+//     ["E", "E", "T", "B", "B", "T","E","E"],
+//     ["E", "E", "T", "T", "T", "T","E","E"]
+//     ];
+
+
+
+
+
 
         window.addEventListener("keydown", function (event) {
             if (event.key === "ArrowLeft") {
