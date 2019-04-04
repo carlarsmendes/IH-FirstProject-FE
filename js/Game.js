@@ -120,13 +120,13 @@ class Game {
                         initialSetup();
                     }
 
-                // console.log("on my left there is a beer");
+      
                 initialSetup();
                 break;
             case "K":
                 if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] === "T") {
-                    console.log("there's a tile two cols ahead")
+                    
                     this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K"
                     this.board[this.getPlayerY()][this.getPlayerX()] === "P"
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] = "T"
@@ -134,21 +134,21 @@ class Game {
                 }
                 else if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] === "K"){
-                    // console.log("there's a tile two cols ahead")
+                  
                     this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K"
                     this.board[this.getPlayerY()][this.getPlayerX()] === "P"
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] = "K"
-                    // this.getPlayerY() = y
+            
                     initialSetup();
                 }
 
                 else if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] === "KB"){
-                    // console.log("there's a tile two cols ahead")
+            
                     this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K"
                     this.board[this.getPlayerY()][this.getPlayerX()] === "P"
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] = "KB"
-                    // this.getPlayerY() = y
+            
                     initialSetup();
                 }
 
@@ -157,8 +157,8 @@ class Game {
         
                     this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "P";
-                    // this.getPlayerX() = this.getPlayerX() - 1;
-                    this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "KB";//HERE ADD CLASS
+                   
+                    this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "KB";
                     
 
                     if (this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])] === "B") {
@@ -174,7 +174,7 @@ class Game {
                     this.board[this.getPlayerY()][this.getPlayerX() + 1] === "PB") {
                     this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "P";
-                    // this.getPlayerX() = this.getPlayerX() - 1;
+                   
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "K";
                     this.board[this.playerVariable[0]][(this.playerVariable[1])] = "B";
                     initialSetup()
@@ -183,10 +183,10 @@ class Game {
                 else {
                     this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "P";
-                    // this.getPlayerX() = this.getPlayerX() - 1;
+                   
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "K";
                     initialSetup();
-                    // this.board[this.playerVariable[0]][(this.playerVariable[1])]="E";
+                   
 
                     if (this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])] === "B") {
                         this.board[this.playerVariable[0]][(this.playerVariable[1])] = "B";
@@ -197,8 +197,7 @@ class Game {
                         initialSetup();
                     }
 
-                    // this.getPlayerX() = this.getPlayerX()-1;
-                    // console.log("on my left there is a keg");
+                  
 
                 };
 
@@ -206,7 +205,7 @@ class Game {
             case "E":
                 this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
                 this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "P";
-                // this.getPlayerX() = this.getPlayerX() - 1;
+          
 
 
                 if (this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])] === "B") {
@@ -217,10 +216,7 @@ class Game {
                     this.board[this.playerVariable[0]][(this.playerVariable[1])] = "E";
                     initialSetup();
                 }
-                // this.board[this.playerVariable[0]][(this.playerVariable[1])] = "E";
-                // // this.playerVariable = [this.getPlayerY(),this.getPlayerX()];
-
-                // console.log("on my left there is empty space");
+             
                 initialSetup();
                 break;
             case "KB":
@@ -228,7 +224,7 @@ class Game {
 
                 if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "KB" &&
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] === "T") {
-                    // console.log("there's a tile two cols ahead")
+                  
                     this.board[this.getPlayerY()][this.getPlayerX() - 1] === "KB"
                     this.board[this.getPlayerY()][this.getPlayerX()] === "P"
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] = "T"

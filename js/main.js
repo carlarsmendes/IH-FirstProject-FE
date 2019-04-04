@@ -127,8 +127,6 @@ function updateBoard() { //figure out wihout jQuery
               $( "#" + x + "-" + y  ).css("top", y*5+"vw");
             //   $( "#" + x + "-" + y  ).css("width", TILE_SIZE_WIDTH+"px");
             //   $( "#" + x + "-" + y  ).css("height", TILE_SIZE_HEIGHT+"px");
-            //   $( '#0-5' ).css('top', '300px')
-            //   $('.handle').css('left', '300px');
              }
             }}
 
@@ -166,26 +164,3 @@ function rotateClockwise(a) {
     return b
 }
     
-//--------------Here to turn it from empty beer to full beer when the goal is achieved----------
-    //  if(keg.positionX === beer.positionX && keg.positionY === beer.positionY){
-        //change class to "full-beer"
-
-    //  }
-
-// function checkCollision(){  // ----this function should check whether there are any collisions with: "K","B","T","E" and if so, stay in the same place
-//     let nearCollision = false;
-    
-//     for( var i = 0; i < NB_OF_TILES_WIDTH; i++ ) {  
-//         for( var j = 0; j < NB_OF_TILES_HEIGHT; j++ ) { 
-//         if(board[j][i] === "K" || board[j][i] === "T" ||  board[j][i] === "E" ){
-//             nearCollision = true
-//         } 
-
-//         if(board[j][i] === "K"){
-            
-//         } 
-
-
-       
-//         }}
-// }
