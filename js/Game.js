@@ -17,17 +17,35 @@ class Game {
         // K = Keg
         // E = Empty
         //SAVING LEVEL 1 FOR TESTING PURPOSES - UNCOMMENT AFTER BUGS FIXED-----
+        // this.board = [ COMMENT OUT FOR PRESENTATION
+        //     ["E", "E", "T", "T", "T", "T", "E", "E", "E"],
+        //     ["T", "T", "T", "E", "E", "T", "T", "T", "T"],
+        //     ["T", "E", "E", "E", "E", "E", "K", "E", "T"],
+        //     ["T", "E", "T", "E", "E", "T", "K", "E", "T"],
+        //     ["T", "E", "B", "E", "B", "T", "E", "P", "T"],
+        //     ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
+        // ];
         this.board = [
-            ["E", "E", "T", "T", "T", "T", "E", "E", "E"],
-            ["T", "T", "T", "E", "E", "T", "T", "T", "T"],
+            ["T", "T", "T", "T", "T", "T", "E", "E", "E"],
+            ["T", "E", "E", "E", "E", "T", "T", "T", "T"],
             ["T", "E", "E", "E", "E", "E", "K", "E", "T"],
-            ["T", "E", "T", "E", "E", "T", "K", "E", "T"],
-            ["T", "E", "B", "E", "B", "T", "E", "P", "T"],
+            ["T", "E", "B", "B", "B", "E", "K", "E", "T"],
+            ["T", "E", "E", "E", "E", "E", "E", "P", "T"],
             ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
         ];
 
+        // this.fixedItemsBoard = [
+        //     ["E", "E", "T", "T", "T", "T", "E", "E", "E"],
+        //     ["T", "T", "T", "E", "E", "T", "T", "T", "T"],
+        //     ["T", "E", "E", "E", "E", "E", "E", "E", "T"],
+        //     ["T", "E", "B", "B", "B", "E", "E", "E", "T"],
+        //     ["T", "E", "E", "E", "E", "T", "E", "E", "T"],
+        //     ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
+        // ];
+
         this.originalBoard = [...this.board];
-        this.playerVariable;
+
+        this.playerVariable = 0;
 
 
         this.player = { //this defines the player and its initial position. should be diferent for each level, so should 
@@ -57,7 +75,7 @@ class Game {
         return this.board
     }
 
-
+//------THIS INDICATES THE COORDINATES OF THE PLAYER----
     getPlayerX() {
         for (let y = 0; y < this.board.length; y++) {
             for (let x = 0; x < this.board[y].length; x++) {
@@ -68,6 +86,8 @@ class Game {
         }
         throw new Error("There is no Player")
     }
+
+//------THIS INDICATES THE COORDINATES OF THE PLAYER----
     getPlayerY() {
         for (let y = 0; y < this.board.length; y++) {
             for (let x = 0; x < this.board[y].length; x++) {
@@ -78,17 +98,9 @@ class Game {
         }
         throw new Error("There is no Player")
     }
-//CREATE NEW FUNCTION - CARLA
-    // checkIfBeerOriginal(){
 
-    // }
-
-    //Player movements and also the interactions with the kegs
     movePlayerLeft() {
         this.player.direction = 'left'
-        // $( ".player" ).css("left", this.getPlayerX()*5+"vw");
-        // console.log("I'm activating the Player function");
-        // console.log(this.board);
 
         switch (this.board[this.getPlayerY()][this.getPlayerX() - 1]) {
             case "T": //Not supposed to move the tile, or with the tile
@@ -99,16 +111,21 @@ class Game {
             case "B":
                 this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
                 this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "PB";
-
-                this.board[this.playerVariable[0]][(this.playerVariable[1])] =
-                this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])]
+                if (this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])] === "B") {
+                        this.board[this.playerVariable[0]][(this.playerVariable[1])] = "B";
+                        initialSetup();
+                    }
+                    else {
+                        this.board[this.playerVariable[0]][(this.playerVariable[1])] = "E";
+                        initialSetup();
+                    }
 
                 initialSetup();
                 break;
             case "K":
                 if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] === "T") {
-                    
+                    console.log("there's a tile two cols ahead")
                     this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K"
                     this.board[this.getPlayerY()][this.getPlayerX()] === "P"
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] = "T"
@@ -116,21 +133,19 @@ class Game {
                 }
                 else if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] === "K"){
-                  
+                    // console.log("there's a tile two cols ahead")
                     this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K"
                     this.board[this.getPlayerY()][this.getPlayerX()] === "P"
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] = "K"
-            
                     initialSetup();
                 }
 
                 else if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] === "KB"){
-            
+                    // console.log("there's a tile two cols ahead")
                     this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K"
                     this.board[this.getPlayerY()][this.getPlayerX()] === "P"
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] = "KB"
-            
                     initialSetup();
                 }
 
@@ -139,30 +154,8 @@ class Game {
         
                     this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "P";
-                   
-                    this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "KB";
+                    this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "KB";//HERE ADD CLASS
                     
-                    this.board[this.playerVariable[0]][(this.playerVariable[1])] =
-                    this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])]
-
-                }
-                else if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
-                    this.board[this.getPlayerY()][this.getPlayerX() + 1] === "PB") {
-                    this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
-                    this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "P";
-                   
-                    this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "K";
-                    this.board[this.playerVariable[0]][(this.playerVariable[1])] = "B";
-                    initialSetup()
-                }
-
-                else {
-                    this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
-                    this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "P";
-                   
-                    this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "K";
-                    initialSetup();
-                   
 
                     if (this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])] === "B") {
                         this.board[this.playerVariable[0]][(this.playerVariable[1])] = "B";
@@ -172,13 +165,40 @@ class Game {
                         this.board[this.playerVariable[0]][(this.playerVariable[1])] = "E";
                         initialSetup();
                     }
+                }
+                else if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
+                    this.board[this.getPlayerY()][this.getPlayerX() + 1] === "PB") {
+                    this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
+                    this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "P";
+                    
+                    this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "K";
+                    this.board[this.playerVariable[0]][(this.playerVariable[1])] = "B";
+                    initialSetup()
+                }
+
+                else {
+                    this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
+                    this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "P";
+                    
+                    this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "K";
+                    initialSetup();
+
+                    if (this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])] === "B") {
+                        this.board[this.playerVariable[0]][(this.playerVariable[1])] = "B";
+                        initialSetup();
+                    }
+                    else {
+                        this.board[this.playerVariable[0]][(this.playerVariable[1])] = "E";
+                        initialSetup();
+                    }
+
                 };
 
                 break;
             case "E":
                 this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
                 this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "P";
-          
+
 
                 if (this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])] === "B") {
                     this.board[this.playerVariable[0]][(this.playerVariable[1])] = "B";
@@ -188,57 +208,42 @@ class Game {
                     this.board[this.playerVariable[0]][(this.playerVariable[1])] = "E";
                     initialSetup();
                 }
-             
                 initialSetup();
                 break;
-            case "KB":
+                case "KB":
+
 
                 if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "KB" &&
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] === "T") {
-                  
+            
                     this.board[this.getPlayerY()][this.getPlayerX() - 1] === "KB"
                     this.board[this.getPlayerY()][this.getPlayerX()] === "P"
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] = "T"
-                    initialSetup();} 
-
-                 else {this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
+                    initialSetup();
+                } else {this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "PB";
-                    // this.getPlayerX() = this.getPlayerX() - 1;
+         
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "K";
                     this.board[this.playerVariable[0]][(this.playerVariable[1])] = "E";
                     initialSetup();
                     // console.log("on my left there is a beer and a player");
-                    initialSetup();}
+                    initialSetup();};
 
                 break;
             default: console.log("Critical error on interaction with KB");
         }
 
-        // if (this.board[this.getPlayerY()][this.getPlayerX()] === "PB" && this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K") {
-        //     //     console.log("INTERACTION WIH THE BEER FULL EMPTY")
-        //     this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
-        //     this.board[this.playerVariable[0]][(this.playerVariable[1])] = "PB";
-        //     // this.getPlayerX() = this.getPlayerX()-1;
-        //     this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "K";
-        //     // this.board[this.playerVariable[0]][(this.playerVariable[1])]="B";
-        //     initialSetup();
-        //     console.log(this.board);
-        //     // console.log("PB - Player inside the beer");
 
-        // }
 
         if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" && this.board[this.getPlayerY()][this.getPlayerX()] === "PB") {
             this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
-            // this.board[this.playerVariable[0]][(this.playerVariable[1])]="PB";
-            // this.getPlayerX() = this.getPlayerX()-1;
-            // this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="K";
             this.board[this.playerVariable[0]][(this.playerVariable[1])] = "PB";
             initialSetup();
-            // console.log(this.board);
-            // console.log("INSIDE THE BEER");
         }
 
+        // }
     }
+
 
     movePlayerRight() {
         this.board = rotateClockwise(this.board)
