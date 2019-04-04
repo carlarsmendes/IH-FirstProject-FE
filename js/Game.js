@@ -3,7 +3,7 @@
 // const $player = document.querySelector(".player");
 class Game {
 
-    constructor(TOTAL_WIDTH, TOTAL_HEIGHT, playerStartPositionX, playerStartPositionY) {
+    constructor(TOTAL_WIDTH, TOTAL_HEIGHT) {
         this.TOTAL_WIDTH = TOTAL_WIDTH
         this.TOTAL_HEIGHT = TOTAL_HEIGHT
         //     const NB_OF_TILES_WIDTH = board[0].length
@@ -28,13 +28,13 @@ class Game {
         // B = Beer
         // K = Keg
         // E = Empty
-
+        //SAVING LEVEL 1 FOR TESTING PURPOSES - UNCOMMENT AFTER BUGS FIXED-----
         this.board = [
             ["E", "E", "T", "T", "T", "T", "E", "E", "E"],
             ["T", "T", "T", "E", "E", "T", "T", "T", "T"],
             ["T", "E", "E", "E", "E", "E", "K", "E", "T"],
-            ["T", "E", "T", "E", "E", "T", "K", "P", "T"],
-            ["T", "E", "B", "E", "B", "T", "E", "E", "T"],
+            ["T", "E", "T", "E", "E", "T", "K", "E", "T"],
+            ["T", "E", "B", "E", "B", "T", "E", "P", "T"],
             ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
         ];
 
@@ -60,6 +60,14 @@ class Game {
         }
         return this.numberKegs
     }
+
+    resetGame(){
+        this.board = this.originalBoard;
+        initialSetup();
+    
+        return this.board
+    }
+
 
     getPlayerX() {
         for (let y = 0; y < this.board.length; y++) {
@@ -90,13 +98,13 @@ class Game {
     movePlayerLeft() {
         this.player.direction = 'left'
         // $( ".player" ).css("left", this.getPlayerX()*5+"vw");
-        console.log("I'm activating the Player function");
-        console.log(this.board);
+        // console.log("I'm activating the Player function");
+        // console.log(this.board);
 
         switch (this.board[this.getPlayerY()][this.getPlayerX() - 1]) {
             case "T": //Not supposed to move the tile, or with the tile
                 this.board[this.getPlayerY()][this.getPlayerX() - 1] = "T";
-                console.log("on my left there is a tile");
+                // console.log("on my left there is a tile");
                 initialSetup()
                 break;
             case "B":
@@ -112,7 +120,7 @@ class Game {
                         initialSetup();
                     }
 
-                console.log("on my left there is a beer");
+                // console.log("on my left there is a beer");
                 initialSetup();
                 break;
             case "K":
@@ -126,16 +134,27 @@ class Game {
                 }
                 else if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] === "K"){
-                    console.log("there's a tile two cols ahead")
+                    // console.log("there's a tile two cols ahead")
                     this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K"
                     this.board[this.getPlayerY()][this.getPlayerX()] === "P"
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] = "K"
                     // this.getPlayerY() = y
                     initialSetup();
                 }
+
+                else if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
+                    this.board[this.getPlayerY()][this.getPlayerX() - 2] === "KB"){
+                    // console.log("there's a tile two cols ahead")
+                    this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K"
+                    this.board[this.getPlayerY()][this.getPlayerX()] === "P"
+                    this.board[this.getPlayerY()][this.getPlayerX() - 2] = "KB"
+                    // this.getPlayerY() = y
+                    initialSetup();
+                }
+
                 else if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] === "B") {
-                    console.log("there's a BEER two cols ahead")
+        
                     this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "P";
                     // this.getPlayerX() = this.getPlayerX() - 1;
@@ -158,8 +177,6 @@ class Game {
                     // this.getPlayerX() = this.getPlayerX() - 1;
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "K";
                     this.board[this.playerVariable[0]][(this.playerVariable[1])] = "B";
-                    // this.getPlayerX() = this.getPlayerX()-1;
-                    console.log("ON MY RIGHT THERE'S AN EMPTY BEER");
                     initialSetup()
                 }
 
@@ -181,7 +198,7 @@ class Game {
                     }
 
                     // this.getPlayerX() = this.getPlayerX()-1;
-                    console.log("on my left there is a keg");
+                    // console.log("on my left there is a keg");
 
                 };
 
@@ -203,21 +220,30 @@ class Game {
                 // this.board[this.playerVariable[0]][(this.playerVariable[1])] = "E";
                 // // this.playerVariable = [this.getPlayerY(),this.getPlayerX()];
 
-                console.log("on my left there is empty space");
+                // console.log("on my left there is empty space");
                 initialSetup();
                 break;
             case "KB":
-                this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
-                this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "PB";
-                // this.getPlayerX() = this.getPlayerX() - 1;
-                this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "K";
-                this.board[this.playerVariable[0]][(this.playerVariable[1])] = "E";
-                initialSetup();
-                console.log("on my left there is a beer and a player");
-                initialSetup();
+
+
+                if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "KB" &&
+                    this.board[this.getPlayerY()][this.getPlayerX() - 2] === "T") {
+                    // console.log("there's a tile two cols ahead")
+                    this.board[this.getPlayerY()][this.getPlayerX() - 1] === "KB"
+                    this.board[this.getPlayerY()][this.getPlayerX()] === "P"
+                    this.board[this.getPlayerY()][this.getPlayerX() - 2] = "T"
+                    initialSetup();
+                } else {this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
+                    this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "PB";
+                    // this.getPlayerX() = this.getPlayerX() - 1;
+                    this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "K";
+                    this.board[this.playerVariable[0]][(this.playerVariable[1])] = "E";
+                    initialSetup();
+                    // console.log("on my left there is a beer and a player");
+                    initialSetup();}
 
                 break;
-            default: console.log("I don't know what to do with this going left");
+            default: console.log("Critical error on interaction with KB");
         }
 
         // if (this.board[this.getPlayerY()][this.getPlayerX()] === "PB" && this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K") {
@@ -234,15 +260,14 @@ class Game {
         // }
 
         if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" && this.board[this.getPlayerY()][this.getPlayerX()] === "PB") {
-            //     console.log("INTERACTION WIH THE BEER FULL EMPTY")
             this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
             // this.board[this.playerVariable[0]][(this.playerVariable[1])]="PB";
             // this.getPlayerX() = this.getPlayerX()-1;
             // this.board[this.playerVariable[0]][(this.playerVariable[1]-1)]="K";
             this.board[this.playerVariable[0]][(this.playerVariable[1])] = "PB";
             initialSetup();
-            console.log(this.board);
-            console.log("INSIDE THE BEER");
+            // console.log(this.board);
+            // console.log("INSIDE THE BEER");
         }
 
         // }
@@ -291,5 +316,7 @@ class Game {
         this.player.direction = 'down';
         initialSetup();
     }
+
+
 }
 

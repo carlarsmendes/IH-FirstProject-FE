@@ -4,6 +4,12 @@ const $player = document.querySelector(".player");
 
 const $board = document.querySelector(".board-container");
 
+
+// let game1 = new Game(9,6,7,4); 
+
+let game1 = new Game(9,6); 
+
+
 ////HERE FOR DEBUGGING AND TESTING
  // T = Tile
     // P = Player
@@ -11,21 +17,21 @@ const $board = document.querySelector(".board-container");
     // K = Keg
     // E = Empty (Background)
 
-board = [
-    ["E", "E", "T", "T", "T", "T", "E", "E", "E"],
-    ["T", "T", "T", "E", "E", "T", "T", "T", "T"],
-    ["T", "E", "E", "E", "E", "E", "K", "E", "T"],
-    ["T", "E", "T", "E", "E", "T", "K", "E", "T"],
-    ["T", "E", "B", "E", "B", "T", "E", "P", "T"],     
-    ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
-    ];
+// board = [
+//     ["E", "E", "T", "T", "T", "T", "E", "E", "E"],
+//     ["T", "T", "T", "E", "E", "T", "T", "T", "T"],
+//     ["T", "E", "E", "E", "E", "E", "K", "E", "T"],
+//     ["T", "E", "T", "E", "E", "T", "K", "E", "T"],
+//     ["T", "E", "B", "E", "B", "T", "E", "P", "T"],     
+//     ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
+//     ];
 
 const boardWidth = $board.innerWidth //test like this
 const boardHeight = $board.innerWidth
 
 // Some constants
-const NB_OF_TILES_WIDTH = board[0].length
-const NB_OF_TILES_HEIGHT = board.length
+const NB_OF_TILES_WIDTH = game1.board[0].length
+const NB_OF_TILES_HEIGHT = game1.board.length
 
 const TILE_SIZE_WIDTH = boardWidth / NB_OF_TILES_WIDTH
 const TILE_SIZE_HEIGHT = boardHeight / NB_OF_TILES_HEIGHT
@@ -34,21 +40,17 @@ const TILE_SIZE_HEIGHT = boardHeight / NB_OF_TILES_HEIGHT
 //should I have a new game for each level?
 //should I have a player class? or shoud always be the same? should player be a part of the Game class, or separate?
 
-let game1 = new Game(9,6,7,4);  //this should be the initial sizes and also the initial position of the player
+// let game1 = new Game(9,6,7,4);  //this should be the initial sizes and also the initial position of the player
 
 window.addEventListener("keydown", function (event) {
     if (event.key === "ArrowLeft") {
         game1.movePlayerLeft();
-        console.log("move left");
     }else if(event.key === "ArrowRight"){
         game1.movePlayerRight();
-        console.log("move right");
     }else if(event.key === "ArrowUp"){
         game1.movePlayerUp();
-        console.log("move up");
     }else if(event.key === "ArrowDown"){
         game1.movePlayerDown();
-        console.log("move down");
     }
   });
 
@@ -139,6 +141,9 @@ function initialSetup(){
 }
 
 initialSetup();
+
+
+
 
 
 // Create a rotated copy of the array 
