@@ -1,13 +1,20 @@
 
 const $player = document.querySelector(".player");
-
-
 const $board = document.querySelector(".board-container");
 
+const $btnGame1reset = document.getElementById("reset-btn");
 
-// let game1 = new Game(9,6,7,4); 
 
 let game1 = new Game(9,6); 
+
+$btnGame1reset.onclick = function resetGame(){
+    game1.board = game1.originalBoard;
+    initialSetup();
+
+    return game1.board;
+};
+
+// $btnGame1reset.onclick = game1.resetGame();
 
 
 ////HERE FOR DEBUGGING AND TESTING
@@ -111,7 +118,7 @@ function updateBoard() { //figure out wihout jQuery
             break;
             case "PB": $( "#" + x + "-" + y ).addClass("player-beer static");
             break;
-            default: console.log("This tile is outside the game board");   
+            default: console.log("Error: This tile is outside the game board");   
           }
          }
         }}       
@@ -139,9 +146,6 @@ function initialSetup(){
 }
 
 initialSetup();
-
-
-
 
 
 // Create a rotated copy of the array 

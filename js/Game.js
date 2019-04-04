@@ -9,18 +9,6 @@ class Game {
         //     const NB_OF_TILES_WIDTH = board[0].length
         // const NB_OF_TILES_HEIGHT = board.length
 
-        //this should create a matrix with width/height to define for each level.
-        //
-        // this.board = function generateMatrix(){
-        //     let arr = []
-        //     for(let i = 0 ; i< this.TOTAL_HEIGHT ; i++){
-        //       arr[i] = [''];
-        //       for(let j=0 ; j < this.TOTAL_WIDTH; j++){
-        //         arr[i][j]= '';
-        //       }
-        //     }
-        //     return arr
-        //     },
 
         // This would represent the whole Board:
         // T = Tile
@@ -39,6 +27,7 @@ class Game {
         ];
 
         this.originalBoard = [...this.board];
+        this.playerVariable;
 
 
         this.player = { //this defines the player and its initial position. should be diferent for each level, so should 
@@ -110,17 +99,10 @@ class Game {
             case "B":
                 this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
                 this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "PB";
-                // this.getPlayerX() = this.getPlayerX() - 1;
-                if (this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])] === "B") {
-                        this.board[this.playerVariable[0]][(this.playerVariable[1])] = "B";
-                        initialSetup();
-                    }
-                    else {
-                        this.board[this.playerVariable[0]][(this.playerVariable[1])] = "E";
-                        initialSetup();
-                    }
 
-      
+                this.board[this.playerVariable[0]][(this.playerVariable[1])] =
+                this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])]
+
                 initialSetup();
                 break;
             case "K":
@@ -160,15 +142,9 @@ class Game {
                    
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "KB";
                     
+                    this.board[this.playerVariable[0]][(this.playerVariable[1])] =
+                    this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])]
 
-                    if (this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])] === "B") {
-                        this.board[this.playerVariable[0]][(this.playerVariable[1])] = "B";
-                        initialSetup();
-                    }
-                    else {
-                        this.board[this.playerVariable[0]][(this.playerVariable[1])] = "E";
-                        initialSetup();
-                    }
                 }
                 else if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
                     this.board[this.getPlayerY()][this.getPlayerX() + 1] === "PB") {
@@ -196,9 +172,6 @@ class Game {
                         this.board[this.playerVariable[0]][(this.playerVariable[1])] = "E";
                         initialSetup();
                     }
-
-                  
-
                 };
 
                 break;
@@ -206,7 +179,6 @@ class Game {
                 this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
                 this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "P";
           
-
 
                 if (this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])] === "B") {
                     this.board[this.playerVariable[0]][(this.playerVariable[1])] = "B";
@@ -221,15 +193,15 @@ class Game {
                 break;
             case "KB":
 
-
                 if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "KB" &&
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] === "T") {
                   
                     this.board[this.getPlayerY()][this.getPlayerX() - 1] === "KB"
                     this.board[this.getPlayerY()][this.getPlayerX()] === "P"
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] = "T"
-                    initialSetup();
-                } else {this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
+                    initialSetup();} 
+
+                 else {this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "PB";
                     // this.getPlayerX() = this.getPlayerX() - 1;
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "K";
@@ -266,10 +238,7 @@ class Game {
             // console.log("INSIDE THE BEER");
         }
 
-        // }
     }
-
-
 
     movePlayerRight() {
         this.board = rotateClockwise(this.board)
