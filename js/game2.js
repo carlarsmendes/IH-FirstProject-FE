@@ -1,5 +1,5 @@
 
-let game2 = new Game(6,8); 
+let game2 = new Game(9,8); 
 
 
 const $btnGame2reset = document.getElementById("reset-btn2");
@@ -52,6 +52,18 @@ const TILE_SIZE_HEIGHT = 5
 //     /* border: 3px yellow solid; */
     
 // }
+
+
+// game2.board = [
+//         ["T", "T", "T", "T", "T", "T","T","T","T"],
+//         ["T", "E", "E", "B", "T", "E","E","E","T"],
+//         ["T", "E", "E", "K", "E", "K","KB","B","T"],
+//         ["T", "E", "K", "T", "T", "E","T","E","T"],
+//         ["T", "E", "E", "E", "T", "E","E","E","T"],
+//         ["T", "E", "KB", "E", "T", "E","E","T","T"],
+//         ["T", "T", "E", "E", "B", "P","T","T","E"],
+//         ["E", "T", "T", "T", "T", "T","T","E","E"]
+//         ];
 
 
 game2.board = [

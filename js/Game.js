@@ -257,10 +257,26 @@ class Game {
                     this.board[this.getPlayerY()][this.getPlayerX()] === "P"
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] = "T"
                     initialSetup();
-                } else {this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
+                } 
+                //------------------DELETE IF BUGS
+                else if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "KB" &&
+                    this.board[this.getPlayerY()][this.getPlayerX() - 2] === "KB") 
+                    {
+                     this.board[this.getPlayerY()][this.getPlayerX() - 1] === "KB"
+                    this.board[this.getPlayerY()][this.getPlayerX()] === "P"
+                    this.board[this.getPlayerY()][this.getPlayerX() - 1] === "KB"
+                    this.board[this.getPlayerY()][this.getPlayerX() - 2] = "KB"
+                    initialSetup();  
+                } 
+        
+
+
+                
+                else {this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "PB";
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "K";
                     this.board[this.playerVariable[0]][(this.playerVariable[1])] = "E";
+                    console.log("here I'm using the general")
                     initialSetup();};
 
                 break;
