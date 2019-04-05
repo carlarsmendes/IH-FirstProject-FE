@@ -16,7 +16,7 @@ class Game {
         // B = Beer
         // K = Keg
         // E = Empty
-        //SAVING LEVEL 1 FOR TESTING PURPOSES - UNCOMMENT AFTER BUGS FIXED-----
+
         this.board = [ 
             ["E", "E", "T", "T", "T", "T", "E", "E", "E"],
             ["T", "T", "T", "E", "E", "T", "T", "T", "T"],
@@ -25,15 +25,7 @@ class Game {
             ["T", "E", "B", "E", "B", "T", "E", "P", "T"],
             ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
         ];
-        // this.board = [
-        //     ["T", "T", "T", "T", "T", "T", "E", "E", "E"],
-        //     ["T", "E", "E", "E", "E", "T", "T", "T", "T"],
-        //     ["T", "E", "E", "E", "E", "E", "K", "E", "T"],
-        //     ["T", "E", "B", "B", "B", "E", "K", "E", "T"],
-        //     ["T", "E", "E", "E", "E", "E", "E", "P", "T"],
-        //     ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
-        // ];
-
+//TESTING FOR FUTURE - ALWAYS HAVE A FIXED ITEMS BOARD
         // this.fixedItemsBoard = [
         //     ["E", "E", "T", "T", "T", "T", "E", "E", "E"],
         //     ["T", "T", "T", "E", "E", "T", "T", "T", "T"],
@@ -48,25 +40,68 @@ class Game {
         this.playerVariable = 0;
 
 
-        this.player = { //this defines the player and its initial position. should be diferent for each level, so should 
+        this.player = { //this defines the DIRECTION OF THE PLAYER IN CASE THERE ARE OTHER IMAGES DOWN, UP, LEFT, ETC.
             direction: "down",
-            // img: src='../img/Beer_Full.svg'//how to look for the image?
+            
         }
         //     x: 6, //3 for testing //let keg1 = [6,2],[6,3] 
         //     y: 2, //3 for testing// let tiles1 = []
         // }
     }
+
+    //THIS FUNCTION COUNTS THE TOTAL NUMBER OF KEGS WHICH ARE ON THE GAME------------
     countKegs() {
         this.numberKegs = 0;
         for (let x = 0; x < this.board.length; x++) {
             for (let y = 0; y < this.board[x].length; y++) {
-                if (this.board[x][y] === "K") {
+                if (this.board[x][y] === "K" || this.board[x][y] === "KB") {
                     this.numberKegs++;
                 }
             }
         }
         return this.numberKegs
     }
+
+
+
+    //FUNCTION TO CALL WITH THE BUTTON
+//-------------DELETE IF ANYTHING WRONG
+
+
+    playerWins() {
+        this.nrTotalKegs = 0;
+        this.nrBeersFull = 0;
+        this.nrBeersEmpty = 0;
+        this.finalMessage = "";
+        for (let x = 0; x < this.board.length; x++) {
+            for (let y = 0; y < this.board[x].length; y++) {
+                
+                if (this.originalBoard[x][y] === "K" || this.originalBoard[x][y] === "KB") {
+                    this.nrTotalKegs++;} 
+                else if (this.board[x][y] === "B" || this.board[x][y] === "PB"){
+                    this.nrBeersEmpty++;
+                }
+                else if (this.board[x][y] === "KB") {
+                    this.nrBeersFull++;
+                }
+                else {}
+            }
+        }
+                if(this.nrTotalKegs === this.nrBeersFull && this.nrBeersFull > 1 ){
+                    this.finalMessage = `<p>Congrats!!</p> <p>${this.nrBeersFull} beers to drink!</p> <p>Go to the next level</p>`;
+                    // document.getElementsByClassName("img-coder").src = "../img/Celebration-06.svg";
+                } else if(this.nrTotalKegs !== this.nrBeersFull && this.nrBeersEmpty === 1 ){
+                    this.finalMessage = `<p>Almost there!! </p><p>${this.nrBeersEmpty} beer left to fill!</p>`
+                } 
+                else {
+                    this.finalMessage = `<p>Long way to go!</p> <p>${this.nrBeersEmpty} beers left to fill!</p>`
+                }
+        return this.finalMessage;
+    }
+
+    //-------------DELETE IF ANYTHING WRONG
+
+//RESET FUNCTION TO CALL WITH THE BUTTON
 
     resetGame(){
         this.board = this.originalBoard;
@@ -98,17 +133,21 @@ class Game {
         }
         throw new Error("There is no Player")
     }
+// -------THiS MOVELEFT() WORKS FOR ALL THE MOVEMENTS - RIGHT, UP, DOWN ----------------
 
     movePlayerLeft() {
         this.player.direction = 'left'
+     //-------------DELETE IF ANYTHING WRONG
+        // $statusBaloon.innerHTML = this.playerWins();
+       //-------------DELETE IF ANYTHING WRONG
 
         switch (this.board[this.getPlayerY()][this.getPlayerX() - 1]) {
-            case "T": //Not supposed to move the tile, or with the tile
+            case "T": //Not supposed to move the tile, or with the tile - Fixed element
                 this.board[this.getPlayerY()][this.getPlayerX() - 1] = "T";
                 // console.log("on my left there is a tile");
                 initialSetup()
                 break;
-            case "B":
+            case "B": //Not supposed to move the beer, or with the beer - Fixed element
                 this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
                 this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "PB";
                 if (this.originalBoard[this.playerVariable[0]][(this.playerVariable[1])] === "B") {
@@ -122,7 +161,7 @@ class Game {
 
                 initialSetup();
                 break;
-            case "K":
+            case "K": //The keg is movable so here are all the possible interactions with the other elements
                 if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] === "T") {
                     console.log("there's a tile two cols ahead")
@@ -133,7 +172,7 @@ class Game {
                 }
                 else if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] === "K"){
-                    // console.log("there's a tile two cols ahead")
+                    
                     this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K"
                     this.board[this.getPlayerY()][this.getPlayerX()] === "P"
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] = "K"
@@ -142,7 +181,7 @@ class Game {
 
                 else if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K" &&
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] === "KB"){
-                    // console.log("there's a tile two cols ahead")
+                    
                     this.board[this.getPlayerY()][this.getPlayerX() - 1] === "K"
                     this.board[this.getPlayerY()][this.getPlayerX()] === "P"
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] = "KB"
@@ -214,14 +253,12 @@ class Game {
 
                 if (this.board[this.getPlayerY()][this.getPlayerX() - 1] === "KB" &&
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] === "T") {
-            
                     this.board[this.getPlayerY()][this.getPlayerX() - 1] === "KB"
                     this.board[this.getPlayerY()][this.getPlayerX()] === "P"
                     this.board[this.getPlayerY()][this.getPlayerX() - 2] = "T"
                     initialSetup();
                 } else {this.playerVariable = [this.getPlayerY(), this.getPlayerX()];
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 1)] = "PB";
-        
                     this.board[this.playerVariable[0]][(this.playerVariable[1] - 2)] = "K";
                     this.board[this.playerVariable[0]][(this.playerVariable[1])] = "E";
                     initialSetup();};
@@ -235,7 +272,7 @@ class Game {
             this.board[this.playerVariable[0]][(this.playerVariable[1])] = "PB";
             initialSetup();
         }
-
+        $statusBaloon.innerHTML = this.playerWins();
         // }
     }
 

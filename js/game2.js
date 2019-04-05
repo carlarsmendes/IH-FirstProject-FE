@@ -8,10 +8,17 @@ const $board2 = document.querySelector("#board2-container");
 
 $btnGame2reset.onclick = function resetGame(){
     game2.board = game2.originalBoard;
+    // Play the GONG Sound on RESET!!!
+    let resetSound = new Audio ("../sounds/NFF-gong.wav");
+    resetSound.play();
     initialSetup();
-
     return game2.board;
 };
+
+const $statusBaloon = document.querySelector(".status-baloon");
+game2.playerWins();
+$statusBaloon.innerHTML= game2.playerWins();
+
 
 const boardWidth = $board2.innerWidth //test like this
 const boardHeight = $board2.innerWidth
@@ -89,7 +96,7 @@ game2.originalBoard = [...game2.board];
           });
 
           function structureCreation(){
-
+            $statusBaloon.innerHTML= game2.playerWins();
             $( "#board2-container" ).html("")
             for( var y = 0; y < game2.board.length; y++ ) {  
                 for( var x = 0; x < game2.board[y].length; x++ ) { 
@@ -157,6 +164,7 @@ game2.originalBoard = [...game2.board];
 
 
     function initialSetup(){
+        
         structureCreation();
         updateBoard();
         positionBoard();

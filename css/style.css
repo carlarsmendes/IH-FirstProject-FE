@@ -9,6 +9,7 @@ body{
     justify-content: center;
     padding:0;
     margin:0;
+    font-family:monospace;
 }
 
 /* -------INTRO GAME SCREEN STYLES--------- */
@@ -94,7 +95,7 @@ body{
     justify-content: space-evenly;
     /* border: 3px solid red; */
     padding:2vw;
-    margin:5% auto;
+    margin:0.2% auto;
 }
 
 .side-info-container{
@@ -135,7 +136,7 @@ body{
 
 .board-container p{
     font-size:40px;
-    font-family:sans-serif;
+    font-family:monospace;
     text-align: center;
     color:white;
     /* border:3px solid black; */
@@ -193,7 +194,39 @@ body{
     /* border: 3px solid greenyellow; */
 }
 
+.baloon-container{
+    background-image: url(../img/Dialogue-10\ \(1\).svg);
+    margin:0;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    /* position:absolute; */
+    padding:0;
+    text-align:center;
+    background-color: transparent;
+    width: 40vw;
+    height: 180px;
+    max-width:90%;
+    /* border: 3px solid yellow; */
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    position:relative;
+}
 
+.dialogue-container{
+    /* border: 3px solid green; */
+    margin:0 20%;
+    height:60%;
+    position:absolute;
+    top:10%;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;  
+    width:60%;
+    font-size:15px; 
+    text-align: center;
+}
 
 
 .game-flex-container{

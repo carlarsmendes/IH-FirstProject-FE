@@ -4,34 +4,27 @@ const $board = document.querySelector(".board-container");
 
 const $btnGame1reset = document.getElementById("reset-btn");
 
-
 let game1 = new Game(9,6); 
+
+// --------Function onclick to reset the game
 
 $btnGame1reset.onclick = function resetGame(){
     game1.board = game1.originalBoard;
+    
+//Play the GONG Sound on RESET!!!
+    let resetSound = new Audio("../sounds/NFF-gong.wav");
+    resetSound.play();
     initialSetup();
-
     return game1.board;
 };
 
-// $btnGame1reset.onclick = game1.resetGame();
+//-------------DELETE IF ANYTHING WRONG
 
+const $statusBaloon = document.querySelector(".status-baloon");
 
-////HERE FOR DEBUGGING AND TESTING
- // T = Tile
-    // P = Player
-    // B = Beer
-    // K = Keg
-    // E = Empty (Background)
+$statusBaloon.innerHTML= game1.playerWins();
 
-// board = [
-//     ["E", "E", "T", "T", "T", "T", "E", "E", "E"],
-//     ["T", "T", "T", "E", "E", "T", "T", "T", "T"],
-//     ["T", "E", "E", "E", "E", "E", "K", "E", "T"],
-//     ["T", "E", "T", "E", "E", "T", "K", "E", "T"],
-//     ["T", "E", "B", "E", "B", "T", "E", "P", "T"],     
-//     ["T", "T", "T", "T", "T", "T", "T", "T", "T"]
-//     ];
+//-------------DELETE IF ANYTHING WRONG
 
 const boardWidth = $board.innerWidth //test like this
 const boardHeight = $board.innerWidth
@@ -43,9 +36,7 @@ const NB_OF_TILES_HEIGHT = game1.board.length
 const TILE_SIZE_WIDTH = boardWidth / NB_OF_TILES_WIDTH
 const TILE_SIZE_HEIGHT = boardHeight / NB_OF_TILES_HEIGHT
 
-//which classes should I create?
-//should I have a new game for each level?
-//should I have a player class? or shoud always be the same? should player be a part of the Game class, or separate?
+
 
 // let game1 = new Game(9,6,7,4);  //this should be the initial sizes and also the initial position of the player
 
@@ -68,10 +59,11 @@ window.addEventListener("keydown", function (event) {
     // E = Empty
 
 
-///Creating the DIV elements with 'no-tile static' and with correspondant IDs  - How to do this without jQuery?
+//-----------Creating the DIV elements with 'no-tile static' and with correspondant IDs ----
 
 function structureCreation(){
-    // for( var i = 0; i < 7; i++ ) {  //BUG::   only works when the numbers with/height are inverted
+    
+    $statusBaloon.innerHTML= game1.playerWins();
     $( ".board-container" ).html("")
     for( var y = 0; y < game1.board.length; y++ ) {  
         for( var x = 0; x < game1.board[y].length; x++ ) { 
@@ -81,7 +73,7 @@ function structureCreation(){
 }
 }
 
-// structureCreation();
+// -------updating board with classes and images------------
 
 
 function updateBoard() { //figure out wihout jQuery
@@ -94,8 +86,6 @@ function updateBoard() { //figure out wihout jQuery
      $( ".game-tile" ).removeClass( "tile static" );
      $( ".game-tile" ).removeClass( "beer-full static" );
      $( ".game-tile" ).removeClass( "player-beer static" );
-
-    //  $( ".game-tile" ).removeClass( "unvisited" );
 
 
     for( var y = 0; y < game1.board.length; y++ ) {  
@@ -122,22 +112,21 @@ function updateBoard() { //figure out wihout jQuery
           }
          }
         }}       
-// updateBoard();
 
-     function positionBoard() { //figure out wihout jQuery
-        //     // $( ".tile static" ).removeClass( "player" );
-        //     // $( ".tile static" ).removeClass( "unvisited" );
+// -------updating board with location based in ID's created previously------------
+
+     function positionBoard() { 
+      
         for( var y = 0; y < game1.board.length; y++ ) {  
             for( var x = 0; x < game1.board[y].length; x++ ) {
             
               $("#" + x + "-" + y  ).css("left" , x*5+"vw");
               $( "#" + x + "-" + y  ).css("top", y*5+"vw");
-            //   $( "#" + x + "-" + y  ).css("width", TILE_SIZE_WIDTH+"px");
-            //   $( "#" + x + "-" + y  ).css("height", TILE_SIZE_HEIGHT+"px");
              }
             }}
 
-//  positionBoard();
+
+// -------General update function which has all the others to update the board fully------------
 
 function initialSetup(){
     structureCreation();
@@ -148,7 +137,8 @@ function initialSetup(){
 initialSetup();
 
 
-// Create a rotated copy of the array 
+// ------Create a rotated copy of the array in order to only write the movements for MoveLeft and the others only rotate---------
+
 function rotateClockwise(a) {
     let height = a.length
     let width = a[0].length
@@ -167,4 +157,6 @@ function rotateClockwise(a) {
     }
     return b
 }
-    
+
+
+//----------Function to change the little guy when the game is over --------------

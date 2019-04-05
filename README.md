@@ -30,8 +30,8 @@ All the rules remained, since there would be no point in doing it in a different
   <li>One page per level.</li>
   <li>Which classes should be created? One clas: Game, including the player and the board</li>
   <li>Define MVP: One level</li>
-  <li>How should this be a challenge? By doing it involving a matrix and creating collision conditions</li>
-  <li>How are my players being kept engaged? -> Little guy on the side with funny dialogue!; Keeping track of moves and time; Looking forward to the end</li>
+  <li>How should this be a challenge? -> By doing it involving a matrix and creating collision conditions</li>
+  <li>How are my players being kept engaged? -> Little guy on the side with funny dialogue!; Looking forward to the end</li>
 </ol>
 
 <h3><b>---Steps to follow---</b></h3>
@@ -40,18 +40,15 @@ All the rules remained, since there would be no point in doing it in a different
   <li>Build the foundation files of HTML, CSS and JS <b>-DONE-</b></li>
   <li>Created the design for: Walls; Empty beer; Filled beer; Beer Keg; player <b>-DONE-</b> (except player) </li>
   <li>Define the main functions and variables: <code>moveLeft()</code> <code>moveRight()</code> <code>moveUp()</code> <code>moveDown()</code> <b>-DONE-</b>
-  <li>Define <code>levelUp()</code> <code>resetLevel()</code> </li>
+  <li>Define <code>levelUp()</code> <code>resetLevel()</code> <b>-DONE-</b></li>
   <li>Test the main functions </li> </li> <b>-DONE-</b>
   <li>Make it visual </li> <b>-DONE-</b>
   <li>Make it move visually </li> </li> <b>-DONE-</b>
+  <li>Try for another level<b>-DONE-</b></li>
+   <li>Design of webpages: Main screen, level up, First screen of welcome & Playgame <b>-DONE-</b></li>
   <li>Fix the bugs </li> </li> <i>-IN CONSTRUCTION-</i>
-  <li>Try for another level</li>
-  <li>Design of webpages: Main screen, level up, First screen of welcome & Playgame </li>
 </ol>
 
-<h3><b>---Design picked & color scheme---</b></h3>
-  
-<h3><b>---Structure---</b></h3>
 <h3><b>---Technologies used---</b></h3>
 <ol>
   <li>Html5, CSS3</li>
@@ -65,6 +62,11 @@ All the rules remained, since there would be no point in doing it in a different
   <li>Conditions to render the different behavior throughout the screen</li>
 </ol>
 <h3><b>---Unsolved problems---</b></h3>
+<ol>
+  <li>Bug when there are many ineractions with beers and full beers</li>
+  <li>Scaling up more easily</li>
+</ol>
+
 <h3><b>---Questions to answer to---</b></h3>
 <ul>
   <li>Did you deliver a project that met all the technical requirements? Given what the class has covered so far, did you build something that was reasonably complex?</li>

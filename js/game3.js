@@ -1,17 +1,21 @@
-
 let game3 = new Game(9,8); 
 
 
 const $btnGame3reset = document.getElementById("reset-btn3");
 const $board3 = document.querySelector("#board3-container");
 
-
 $btnGame3reset.onclick = function resetGame(){
     game3.board = game3.originalBoard;
+    let resetSound = new Audio ("../sounds/NFF-gong.wav");
+    resetSound.play();
+    
     initialSetup();
 
     return game3.board;
 };
+
+const $statusBaloon = document.querySelector(".status-baloon");
+$statusBaloon.innerHTML= game3.playerWins();
 
 const boardWidth = $board3.innerWidth //test like this
 const boardHeight = $board3.innerWidth
@@ -26,25 +30,7 @@ const NB_OF_TILES_HEIGHT = game3.board.length
 const TILE_SIZE_WIDTH = 5
 const TILE_SIZE_HEIGHT = 5
 
-// $(".movable.static" ).width(TILE_SIZE_WIDTH+"vw");
 
-// document.getElementsByClassName("static").style.width = "5vw";
-
-// $(".movable.static" ).css("height" , TILE_SIZE_HEIGHT+"vw");
-
-
-// .movable, .static{
-//     position:absolute;
-//     padding:0;
-//     text-align:center;
-//     background-color: transparent;
-//     width: 5vw;
-//     height: 5vw;
-//     margin:0;
-//     background-size: 100% 100%;
-//     /* border: 3px yellow solid; */
-    
-// }
 
 
 game3.board = [
@@ -89,7 +75,7 @@ game3.originalBoard = [...game3.board];
           });
 
           function structureCreation(){
-
+            $statusBaloon.innerHTML= game3.playerWins();
             $( "#board3-container" ).html("")
             for( var y = 0; y < game3.board.length; y++ ) {  
                 for( var x = 0; x < game3.board[y].length; x++ ) { 
@@ -103,9 +89,6 @@ game3.originalBoard = [...game3.board];
         
         
         function updateBoard() { //figure out wihout jQuery
-            //     // $( ".tile static" ).removeClass( "player" );
-            //     // $( ".tile static" ).removeClass( "unvisited" );
-        
              $( ".game-tile" ).removeClass( "beer-empty static" );
              $( ".game-tile" ).removeClass( "player movable" );
              $( ".game-tile" ).removeClass( "keg movable" );
